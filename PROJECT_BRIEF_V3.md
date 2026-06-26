@@ -115,8 +115,8 @@ distributed-kv/
 
 ## ✅ Current Status
 
-**Current Phase:** 0
-**Status:** complete
+**Current Phase:** 1
+**Status:** In Progress
 
 ### Prerequisites (complete before Day 1)
 - [X ] Read the Raft paper summary — search "Raft consensus algorithm explained simply"
@@ -208,4 +208,4 @@ committed entries are applied to the KV store.
 prove it's alive and reset their election timers.
 
 ---
-*Last updated: Day 0 —completed*
+*Last updated: Day 1 - In Progess*

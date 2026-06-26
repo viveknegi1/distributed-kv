@@ -10,5 +10,7 @@ add_compile_options(-Wall -Wextra -Wpedantic)
 add_executable(distributed-kv 
     src/kv_store.cpp
     src/main.cpp
+    src/logger.cpp
+    src/node_config.cpp
 )
 target_include_directories(distributed-kv PRIVATE include)

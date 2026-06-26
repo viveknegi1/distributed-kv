@@ -1,0 +1,13 @@
+[ Fri Jun 26 15:36:22 2026 ] [ INFO ] Your node id is: 1
+[ Fri Jun 26 15:42:18 2026 ] [ INFO ] Your node id is: 1
+[ Fri Jun 26 15:42:18 2026 ] [ INFO ] Our port address is : 8081
+[ Fri Jun 26 15:42:18 2026 ] [ INFO ] Peer node:  2 port address 8082
+[ Fri Jun 26 15:42:18 2026 ] [ INFO ] Peer node:  3 port address 8083
+[ Fri Jun 26 15:42:58 2026 ] [ INFO ] Your node id is: 2
+[ Fri Jun 26 15:42:58 2026 ] [ INFO ] Our port address is : 8082
+[ Fri Jun 26 15:42:58 2026 ] [ INFO ] Peer node:  1 port address 8081
+[ Fri Jun 26 15:42:58 2026 ] [ INFO ] Peer node:  3 port address 8083
+[ Fri Jun 26 15:43:11 2026 ] [ INFO ] Your node id is: 3
+[ Fri Jun 26 15:43:11 2026 ] [ INFO ] Our port address is : 8083
+[ Fri Jun 26 15:43:11 2026 ] [ INFO ] Peer node:  1 port address 8081
+[ Fri Jun 26 15:43:11 2026 ] [ INFO ] Peer node:  2 port address 8082

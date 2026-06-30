@@ -1,6 +1,9 @@
 #include <iostream>
 #include "node_config.h"
 #include "logger.h"
+#include "peer_manager.h"
+#include <chrono>
+#include <thread>
 
 int main(int argc, char* argv[])
 {
@@ -10,7 +13,7 @@ int main(int argc, char* argv[])
         Logger::getInstance().log(Logger::Level::INFO, std::string ("Usage: ") + argv[0] + " <your_arguments>");
         return 1; 
     }
-    Logger::getInstance().log(Logger::Level::INFO, std::string ("Your node id is: ") + argv[1]);
+    Logger::getInstance().log(Logger::Level::INFO, std::string ("Our node id is: ") + argv[1]);
     std::string nodeId = argv[1];
     NodeConfig nodeConfigObj(nodeId , "node.config");
     std::string ourPortAddress =  nodeConfigObj.getAddressOFNode(nodeId);
@@ -21,6 +24,11 @@ int main(int argc, char* argv[])
 
         Logger::getInstance().log(Logger::Level::INFO, "Peer node:  " + node.nodeID + " port address " + node.portAddress);
 
+    }
+    PeerManager peerManagerObj(nodeConfigObj);
+    while(true)
+    {
+       std::this_thread::sleep_for(std::chrono::seconds(2));
     }
 
     return 0 ;

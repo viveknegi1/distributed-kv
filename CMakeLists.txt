@@ -12,5 +12,7 @@ add_executable(distributed-kv
     src/main.cpp
     src/logger.cpp
     src/node_config.cpp
+    src/peer_connection.cpp
+    src/peer_manager.cpp
 )
 target_include_directories(distributed-kv PRIVATE include)

@@ -5,7 +5,7 @@
 
 Logger::Logger() 
 {
-    m_logFile.open("server.log", std::ios::app);  // append mode
+    m_logFile.open("server.log", std::ios::app);  
 }
 
 Logger& Logger::getInstance()

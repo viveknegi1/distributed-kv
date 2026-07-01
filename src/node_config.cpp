@@ -14,113 +14,111 @@ namespace
     }    
 }
 
-    NodeConfig::NodeConfig(std::string inNodeID , const std::string& inNodeConfigPath)
+NodeConfig::NodeConfig(std::string inNodeID , const std::string& inNodeConfigPath)
+{
+    m_nodeId = inNodeID ;
+    m_configPath = inNodeConfigPath ;
+    readNodeConfig();
+}
+
+std::string NodeConfig::getAddressOFNode(const std::string& inNodeID) const 
+{
+    std::string resultPortAddress;
+    for(const auto& node :m_nodesList )
     {
-        m_nodeId = inNodeID ;
-        m_configPath = inNodeConfigPath ;
-        readNodeConfig();
-    }
-
-    std::string NodeConfig::getAddressOFNode(const std::string& inNodeID) const {
-
-        std::string resultPortAddress;
-        for(const auto& node :m_nodesList )
+        if(node.nodeID == inNodeID)
         {
-            if(node.nodeID == inNodeID)
-            {
-                resultPortAddress = node.portAddress ;
-            }
+            resultPortAddress = node.portAddress ;
         }
-
-        return resultPortAddress ;
-
     }
 
-    std::string NodeConfig::getNodeIdOnPortAddress(const std::string& inPortAddress) const
+    return resultPortAddress ;
+
+}
+
+std::string NodeConfig::getNodeIdOnPortAddress(const std::string& inPortAddress) const
+{
+    std::string resultNodeID;
+    for(const auto& node :m_nodesList )
     {
-
-        std::string resultNodeID;
-        for(const auto& node :m_nodesList )
+        if(node.portAddress == inPortAddress)
         {
-            if(node.portAddress == inPortAddress)
-            {
-                resultNodeID = node.nodeID ;
-            }
+            resultNodeID = node.nodeID ;
         }
-
-        return resultNodeID ;
-
     }
 
+    return resultNodeID ;
 
-    std::vector<NodeConfig::PeerStruct> NodeConfig::getAllOtherNodes()  const
+}
+
+
+std::vector<NodeConfig::PeerStruct> NodeConfig::getAllOtherNodes()  const
+{
+    std::vector<NodeConfig::PeerStruct> allOtherNodes ;
+    for(const auto& node :m_nodesList )
     {
-
-        
-        std::vector<NodeConfig::PeerStruct> allOtherNodes ;
-        for(const auto& node :m_nodesList )
+        if(node.nodeID != m_nodeId)
         {
-            if(node.nodeID != m_nodeId)
-            {
-                allOtherNodes.push_back(node);
-            }
+            allOtherNodes.push_back(node);
         }
-
-        return allOtherNodes ;
     }
+
+    return allOtherNodes ;
+}
     
 
-    void NodeConfig::readNodeConfig()
+void NodeConfig::readNodeConfig()
+{
+    std::ifstream file(m_configPath);
+    if(!file.is_open())
     {
-        std::ifstream file(m_configPath);
-        if(!file.is_open())
-        {
-            Logger::getInstance().log(Logger::Level::ERROR, "Could not open config file");
-            return ;
-        }
-
-        std::string line;
-        int i = 0 ;
-        while(std::getline(file, line)) 
-        {
-            size_t firstEq = line.find('=');
-            if (firstEq == std::string::npos)
-            {
-                Logger::getInstance().log(Logger::Level::ERROR, "No nodeID present at line " + std::to_string(i));
-                i++ ;
-                continue;
-            }
-            // Find the second occurrence starting just after the first one
-            size_t secondEq = line.find('=', firstEq + 1);
-            if (secondEq == std::string::npos) 
-            {
-        
-                Logger::getInstance().log(Logger::Level::ERROR, "No port address present at line " + std::to_string(i));
-                i++;
-                continue ;
-            } 
-        
-            // Find the comma that marks the end of the first value
-            size_t comma = line.find(',', firstEq + 1);
-
-            std::string nodeId, portAddress;
-            // Extract first value (between first '=' and the comma)
-            if (comma != std::string::npos && comma > firstEq) {
-                nodeId = trim(line.substr(firstEq + 1, comma - (firstEq + 1)));
-            }
-
-            // Extract second value (everything after the second '=')
-            portAddress = trim(line.substr(secondEq + 1));
-
-            NodeConfig::PeerStruct currentNode ;
-            currentNode.nodeID = nodeId ;
-            currentNode.portAddress = portAddress ;  
-            if(currentNode.nodeID == m_nodeId)
-            {
-                m_portAddress = currentNode.portAddress ;
-            }
-            m_nodesList.push_back(currentNode);
-
-        }
+        Logger::getInstance().log(Logger::Level::ERROR, "Could not open config file");
+        return ;
     }
+
+    std::string line;
+    int i = 0 ;
+    while(std::getline(file, line)) 
+    {
+        size_t firstEq = line.find('=');
+        if (firstEq == std::string::npos)
+        {
+            Logger::getInstance().log(Logger::Level::ERROR, "No nodeID present at line " + std::to_string(i));
+            i++ ;
+            continue;
+        }
+        // Find the second occurrence starting just after the first one
+        size_t secondEq = line.find('=', firstEq + 1);
+        if (secondEq == std::string::npos) 
+        {
+            Logger::getInstance().log(Logger::Level::ERROR, "No port address present at line " + std::to_string(i));
+            i++;
+            continue ;
+        } 
+        
+        // Find the comma that marks the end of the first value
+        size_t comma = line.find(',', firstEq + 1);
+
+        std::string nodeId, portAddress;
+            // Extract first value (between first '=' and the comma)
+        if (comma != std::string::npos && comma > firstEq) 
+        {
+            nodeId = trim(line.substr(firstEq + 1, comma - (firstEq + 1)));
+        }
+
+        // Extract second value (everything after the second '=')
+        portAddress = trim(line.substr(secondEq + 1));
+
+        NodeConfig::PeerStruct currentNode ;
+        currentNode.nodeID = nodeId ;
+        currentNode.portAddress = portAddress ;  
+        if(currentNode.nodeID == m_nodeId)
+        {
+            m_portAddress = currentNode.portAddress ;
+        }
+            
+        m_nodesList.push_back(currentNode);
+
+    }
+}
     

@@ -9,16 +9,12 @@
 
 RpcServer::RpcServer(int portNum)
 {
-
     m_portNumber = portNum ;
     start();
-
 }
-
 
 void RpcServer::start()
 {
-
     if(initialize())
     {
         if( bindSocket())
@@ -52,7 +48,7 @@ bool RpcServer::initialize()
 
 bool RpcServer::bindSocket()
 {
-     sockaddr_in in_sockaddrStruct ; 
+    sockaddr_in in_sockaddrStruct ; 
     in_sockaddrStruct.sin_family = AF_INET ;
     in_sockaddrStruct.sin_port = htons(m_portNumber) ; //converts byte order 
     in_sockaddrStruct.sin_addr.s_addr = INADDR_ANY ;
@@ -83,29 +79,21 @@ void RpcServer::startListening()
 
 int RpcServer::acceptConnection()
 {
+    sockaddr_in clientAddr;
+    socklen_t clientSize = sizeof(clientAddr);
+    int clientFd = accept(m_serverSocket, (sockaddr*)&clientAddr, &clientSize);
 
-    
-        sockaddr_in clientAddr;
-        socklen_t clientSize = sizeof(clientAddr);
-
-        int clientFd = accept(m_serverSocket, (sockaddr*)&clientAddr, &clientSize);
     if(clientFd == -1)
     {
         Logger::getInstance().log(Logger::Level::ERROR, "Failed to accept the client");
        
     }
-
     return clientFd;
-
 }
         
 void RpcServer::handleConnection(int socketFd)
 {
-
-
- Logger::getInstance().log(Logger::Level::INFO, "Connection request was recieved for file descriptor " + std::to_string(socketFd));
-
-
+    Logger::getInstance().log(Logger::Level::INFO, "Connection request was recieved for file descriptor " + std::to_string(socketFd));
 }
 
 RpcServer::~RpcServer()
@@ -124,5 +112,3 @@ RpcServer::~RpcServer()
     }
     
 }
-        
-        

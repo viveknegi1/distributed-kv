@@ -10,8 +10,7 @@
 
 
  PeerConnection::PeerConnection(std::string inNodeID, int inPortAddress) : m_nodeID(inNodeID) , m_portAddress(inPortAddress)
- {
-    
+ { 
     // The constructor immediately invokes the connection logic
     bool success = establishConnection();
     if (!success) 
@@ -24,7 +23,6 @@
 
 bool PeerConnection::establishConnection()
 {
-
     m_fileDescriptor = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     if (m_fileDescriptor == -1) {
         Logger::getInstance().log(Logger::Level::ERROR, "Invalid Socket Address");
@@ -58,7 +56,7 @@ bool PeerConnection::isConnected() const
         
 void PeerConnection::sendDataToPeers(const std::string& inData)
 {
-
+    Logger::getInstance().log(Logger::Level::INFO, "Recieved string data" + inData + " to send to peers");
 
 }
 
@@ -84,13 +82,13 @@ void PeerConnection::sendDataToPeers(const std::string& inData)
        return ; // already connected ;
     }
 
-    while(!m_shouldStop) {
-        
+    while(!m_shouldStop) 
+    {
         if (establishConnection()) 
         {
             Logger::getInstance().log(Logger::Level::INFO, "Connected to successfully to port" + std::to_string(m_portAddress));
             m_isConnected = true ;
-            break; // Exit the endless loop on success
+            break; 
         }
 
         // If it fails, log it, sleep for 2 seconds, and try again

@@ -13,10 +13,9 @@ std::optional<std::string> KvStore::get(const std::string& key) const
     {
         std::lock_guard<std::mutex> lock(m_mutex);
         auto it = m_store.find(key);
-        if( it != m_store.end()) {
-            
-            return it->second; 
-            
+        if( it != m_store.end()) 
+        {    
+            return it->second;    
         }
     }
     return std::nullopt; 

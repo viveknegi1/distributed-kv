@@ -3,7 +3,6 @@
 
 PeerManager::PeerManager(const NodeConfig& nodeConfig)
 {
-
     auto allNodesData = nodeConfig.getAllOtherNodes();
     for(const auto& nodeData: allNodesData)
     {

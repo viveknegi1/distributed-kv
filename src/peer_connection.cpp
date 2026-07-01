@@ -57,7 +57,6 @@ bool PeerConnection::isConnected() const
 void PeerConnection::sendDataToPeers(const std::string& inData)
 {
     Logger::getInstance().log(Logger::Level::INFO, "Recieved string data" + inData + " to send to peers");
-
 }
 
  PeerConnection::~PeerConnection()
@@ -72,7 +71,6 @@ void PeerConnection::sendDataToPeers(const std::string& inData)
     { 
         m_thread.join();
     }
-
  }
 
  void PeerConnection::retryConnection()

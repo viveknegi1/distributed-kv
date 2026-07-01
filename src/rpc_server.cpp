@@ -17,14 +17,12 @@ void RpcServer::start()
 {
     if(initialize())
     {
-        if( bindSocket())
+        if(bindSocket())
         {
             if (listen(m_serverSocket, 10) == -1)
             {
-
-            Logger::getInstance().log(Logger::Level::ERROR, "Failed to listen on socket");
-            return;
-
+                Logger::getInstance().log(Logger::Level::ERROR, "Failed to listen on socket");
+                return;
             }
             m_listenerThread = std::thread(&RpcServer::startListening, this);
         }
@@ -71,9 +69,7 @@ void RpcServer::startListening()
         if(socketFd >= 0 )
         {
             m_peerConnections.push_back( std::thread (&RpcServer::handleConnection, this, socketFd) );
-
         } 
-
     }
 }        
 
@@ -85,8 +81,7 @@ int RpcServer::acceptConnection()
 
     if(clientFd == -1)
     {
-        Logger::getInstance().log(Logger::Level::ERROR, "Failed to accept the client");
-       
+        Logger::getInstance().log(Logger::Level::ERROR, "Failed to accept the client");      
     }
     return clientFd;
 }
@@ -110,5 +105,4 @@ RpcServer::~RpcServer()
         close(m_serverSocket) ;
         m_serverSocket = -1;
     }
-    
 }

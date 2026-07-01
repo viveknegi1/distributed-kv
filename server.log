@@ -1924,3 +1924,76 @@
 [ Tue Jun 30 17:28:33 2026 ] [ ERROR ] Connection failed will try in 2 seconds
 [ Tue Jun 30 17:28:33 2026 ] [ ERROR ] Unable to connect
 [ Tue Jun 30 17:28:33 2026 ] [ ERROR ] Connection failed will try in 2 seconds
+[ Wed Jul  1 11:33:22 2026 ] [ INFO ] Our node id is: 1
+[ Wed Jul  1 11:33:22 2026 ] [ INFO ] Our port address is : 8081
+[ Wed Jul  1 11:33:22 2026 ] [ INFO ] Peer node:  2 port address 8082
+[ Wed Jul  1 11:33:22 2026 ] [ INFO ] Peer node:  3 port address 8083
+[ Wed Jul  1 11:33:22 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  1 11:33:22 2026 ] [ ERROR ] Initialization warning: Failed to connect to 127.0.0.1 on port8082
+[ Wed Jul  1 11:33:22 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  1 11:33:22 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  1 11:33:22 2026 ] [ ERROR ] Initialization warning: Failed to connect to 127.0.0.1 on port8083
+[ Wed Jul  1 11:33:22 2026 ] [ ERROR ] Connection failed will try in 2 seconds
+[ Wed Jul  1 11:33:22 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  1 11:33:22 2026 ] [ ERROR ] Connection failed will try in 2 seconds
+[ Wed Jul  1 11:33:24 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  1 11:33:24 2026 ] [ ERROR ] Connection failed will try in 2 seconds
+[ Wed Jul  1 11:33:24 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  1 11:33:24 2026 ] [ ERROR ] Connection failed will try in 2 seconds
+[ Wed Jul  1 11:33:26 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  1 11:33:26 2026 ] [ ERROR ] Connection failed will try in 2 seconds
+[ Wed Jul  1 11:33:26 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  1 11:33:26 2026 ] [ ERROR ] Connection failed will try in 2 seconds
+[ Wed Jul  1 11:33:27 2026 ] [ INFO ] Our node id is: 2
+[ Wed Jul  1 11:33:27 2026 ] [ INFO ] Our port address is : 8082
+[ Wed Jul  1 11:33:27 2026 ] [ INFO ] Peer node:  1 port address 8081
+[ Wed Jul  1 11:33:27 2026 ] [ INFO ] Peer node:  3 port address 8083
+[ Wed Jul  1 11:33:27 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  1 11:33:27 2026 ] [ ERROR ] Initialization warning: Failed to connect to 127.0.0.1 on port8083
+[ Wed Jul  1 11:33:27 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  1 11:33:27 2026 ] [ ERROR ] Connection failed will try in 2 seconds
+[ Wed Jul  1 11:33:27 2026 ] [ INFO ] Connection request was recieved for file descriptor 4
+[ Wed Jul  1 11:33:28 2026 ] [ INFO ] Connected to successfully to port8082
+[ Wed Jul  1 11:33:28 2026 ] [ INFO ] Connection request was recieved for file descriptor 6
+[ Wed Jul  1 11:33:28 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  1 11:33:28 2026 ] [ ERROR ] Connection failed will try in 2 seconds
+[ Wed Jul  1 11:33:29 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  1 11:33:29 2026 ] [ ERROR ] Connection failed will try in 2 seconds
+[ Wed Jul  1 11:33:30 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  1 11:33:30 2026 ] [ ERROR ] Connection failed will try in 2 seconds
+[ Wed Jul  1 11:33:31 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  1 11:33:31 2026 ] [ ERROR ] Connection failed will try in 2 seconds
+[ Wed Jul  1 11:33:32 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  1 11:33:32 2026 ] [ ERROR ] Connection failed will try in 2 seconds
+[ Wed Jul  1 11:33:33 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  1 11:33:33 2026 ] [ ERROR ] Connection failed will try in 2 seconds
+[ Wed Jul  1 11:33:34 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  1 11:33:34 2026 ] [ ERROR ] Connection failed will try in 2 seconds
+[ Wed Jul  1 11:33:35 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  1 11:33:35 2026 ] [ ERROR ] Connection failed will try in 2 seconds
+[ Wed Jul  1 11:33:36 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  1 11:33:36 2026 ] [ ERROR ] Connection failed will try in 2 seconds
+[ Wed Jul  1 11:33:37 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  1 11:33:37 2026 ] [ ERROR ] Connection failed will try in 2 seconds
+[ Wed Jul  1 11:33:38 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  1 11:33:38 2026 ] [ ERROR ] Connection failed will try in 2 seconds
+[ Wed Jul  1 11:33:39 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  1 11:33:39 2026 ] [ ERROR ] Connection failed will try in 2 seconds
+[ Wed Jul  1 11:33:40 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  1 11:33:40 2026 ] [ ERROR ] Connection failed will try in 2 seconds
+[ Wed Jul  1 11:33:41 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  1 11:33:41 2026 ] [ ERROR ] Connection failed will try in 2 seconds
+[ Wed Jul  1 11:33:42 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  1 11:33:42 2026 ] [ ERROR ] Connection failed will try in 2 seconds
+[ Wed Jul  1 11:33:43 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  1 11:33:43 2026 ] [ ERROR ] Connection failed will try in 2 seconds
+[ Wed Jul  1 11:33:43 2026 ] [ INFO ] Our node id is: 3
+[ Wed Jul  1 11:33:43 2026 ] [ INFO ] Our port address is : 8083
+[ Wed Jul  1 11:33:43 2026 ] [ INFO ] Peer node:  1 port address 8081
+[ Wed Jul  1 11:33:43 2026 ] [ INFO ] Peer node:  2 port address 8082
+[ Wed Jul  1 11:33:43 2026 ] [ INFO ] Connection request was recieved for file descriptor 7
+[ Wed Jul  1 11:33:43 2026 ] [ INFO ] Connection request was recieved for file descriptor 7
+[ Wed Jul  1 11:33:44 2026 ] [ INFO ] Connected to successfully to port8083
+[ Wed Jul  1 11:33:44 2026 ] [ INFO ] Connection request was recieved for file descriptor 7
+[ Wed Jul  1 11:33:45 2026 ] [ INFO ] Connected to successfully to port8083
+[ Wed Jul  1 11:33:45 2026 ] [ INFO ] Connection request was recieved for file descriptor 8

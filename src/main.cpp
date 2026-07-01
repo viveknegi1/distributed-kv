@@ -4,6 +4,7 @@
 #include "peer_manager.h"
 #include <chrono>
 #include <thread>
+#include "rpc_server.h"
 
 int main(int argc, char* argv[])
 {
@@ -26,6 +27,10 @@ int main(int argc, char* argv[])
 
     }
     PeerManager peerManagerObj(nodeConfigObj);
+    auto portAddressString = nodeConfigObj.getAddressOFNode(nodeId);
+    auto portAddress = std::stoi(portAddressString);
+    RpcServer rpcServerObj(portAddress);
+    
     while(true)
     {
        std::this_thread::sleep_for(std::chrono::seconds(2));

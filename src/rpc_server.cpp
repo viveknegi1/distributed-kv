@@ -1,9 +1,9 @@
 #include "rpc_server.h"
 
 #include "logger.h"
-#include <netinet/in.h> // sockaddr_in struct
-#include <sys/socket.h> //   socket(), bind(), listen(), accept()
-#include <unistd.h> // close()
+#include <netinet/in.h> 
+#include <sys/socket.h> 
+#include <unistd.h> 
 #include <thread>
 
 

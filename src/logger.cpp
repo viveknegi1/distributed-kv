@@ -1,5 +1,4 @@
 #include "logger.h"
-
 #include <ctime>
 #include <iostream>
 

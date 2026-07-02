@@ -1997,3 +1997,13 @@
 [ Wed Jul  1 11:33:44 2026 ] [ INFO ] Connection request was recieved for file descriptor 7
 [ Wed Jul  1 11:33:45 2026 ] [ INFO ] Connected to successfully to port8083
 [ Wed Jul  1 11:33:45 2026 ] [ INFO ] Connection request was recieved for file descriptor 8
+[ Thu Jul  2 11:30:29 2026 ] [ INFO ] Usage: ./build/distributed-kv <your_arguments>
+[ Thu Jul  2 11:30:39 2026 ] [ INFO ] Our node id is: 1
+[ Thu Jul  2 11:30:39 2026 ] [ INFO ] Our port address is : 8081
+[ Thu Jul  2 11:30:39 2026 ] [ INFO ] Peer node:  2 port address 8082
+[ Thu Jul  2 11:30:39 2026 ] [ INFO ] Peer node:  3 port address 8083
+[ Thu Jul  2 11:30:39 2026 ] [ INFO ] Command key : name Command value:John
+[ Thu Jul  2 11:31:15 2026 ] [ INFO ] Usage: ./build/distributed-kv <your_arguments>
+[ Thu Jul  2 11:31:17 2026 ] [ INFO ] Our node id is: 1
+[ Thu Jul  2 11:31:17 2026 ] [ INFO ] Our port address is : 8081
+[ Thu Jul  2 11:31:17 2026 ] [ INFO ] Command key : name Command value:John

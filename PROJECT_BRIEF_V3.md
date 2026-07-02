@@ -115,7 +115,7 @@ distributed-kv/
 
 ## ✅ Current Status
 
-**Current Phase:** 1
+**Current Phase:** 2
 **Status:** Complete
 
 ### Prerequisites (complete before Day 1)
@@ -140,6 +140,7 @@ distributed-kv/
 | Binary RPC protocol | Consistent with persistence layer you already know |
 |Single binary with CLI arguments for node identity | maintaing multiple binaries are complex and not standard |
 | KvStore stripped of TTL  |  durable store, not a cache |
+| message.h for shared access across project | ReplicationLog is purely local with no network knowledge |
 ---
 
 ## ⚠️ Mistakes / Rethinks Log
@@ -151,7 +152,7 @@ distributed-kv/
 | Concept | Introduced in Phase | Understood? |
 |---------|--------------------:|-------------|
 | Templates (writing your own) | 2 | — |
-| `std::variant` | 2 | — |
+| `std::variant` | 2 | X |
 | `std::future` / `std::promise` | 3 | — |
 | Lock-free structures | 4 | — |
 | Exception handling | 5 | — |
@@ -208,4 +209,4 @@ committed entries are applied to the KV store.
 prove it's alive and reset their election timers.
 
 ---
-*Last updated: Day 1 - Complete*
+*Last updated: Day 2 - Complete*

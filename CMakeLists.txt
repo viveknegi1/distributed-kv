@@ -15,5 +15,6 @@ add_executable(distributed-kv
     src/peer_connection.cpp
     src/peer_manager.cpp
     src/rpc_server.cpp
+    src/replication_log.cpp
 )
 target_include_directories(distributed-kv PRIVATE include)

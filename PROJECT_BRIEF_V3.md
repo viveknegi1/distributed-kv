@@ -115,7 +115,7 @@ distributed-kv/
 
 ## ✅ Current Status
 
-**Current Phase:** 2
+**Current Phase:** 4
 **Status:** Complete
 
 ### Prerequisites (complete before Day 1)
@@ -141,6 +141,10 @@ distributed-kv/
 |Single binary with CLI arguments for node identity | maintaing multiple binaries are complex and not standard |
 | KvStore stripped of TTL  |  durable store, not a cache |
 | message.h for shared access across project | ReplicationLog is purely local with no network knowledge |
+| election timer resets via condition variable on heartbeat receipt | 
+| binary protocol with type byte prefix, forward declaration to break circular dependency, setter pattern for RpcServer/RaftNode wiring |
+
+
 ---
 
 ## ⚠️ Mistakes / Rethinks Log
@@ -209,4 +213,4 @@ committed entries are applied to the KV store.
 prove it's alive and reset their election timers.
 
 ---
-*Last updated: Day 2 - Complete*
+*Last updated: Day 4 - Complete*

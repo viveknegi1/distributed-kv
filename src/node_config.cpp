@@ -122,3 +122,7 @@ void NodeConfig::readNodeConfig()
     }
 }
     
+std::string NodeConfig::getOwnNodeID() const
+{
+    return m_nodeId;
+}

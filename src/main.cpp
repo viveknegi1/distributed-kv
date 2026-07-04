@@ -7,6 +7,7 @@
 #include "rpc_server.h"
 #include <message.h>
 #include <replication_log.h>
+#include "raft_node.h"
 
 int main(int argc, char* argv[])
 {
@@ -29,17 +30,25 @@ int main(int argc, char* argv[])
         Logger::getInstance().log(Logger::Level::INFO, "Peer node:  " + node.nodeID + " port address " + node.portAddress);
 
     }
-   
+     */
     PeerManager peerManagerObj(nodeConfigObj);
+    
+
+    
     auto portAddressString = nodeConfigObj.getAddressOFNode(nodeId);
     auto portAddress = std::stoi(portAddressString);
     RpcServer rpcServerObj(portAddress);
-
+    ReplicationLog replicationLogObj ;
+    RaftNode raftNodeObj(nodeConfigObj, peerManagerObj, replicationLogObj);
+    auto raftNodePtr = &raftNodeObj;
+    rpcServerObj.setRaftNode(raftNodePtr);
+    raftNodeObj.start();
     while(true)
     {
        std::this_thread::sleep_for(std::chrono::seconds(2));
     }
-    */
+    
+    /*
     LogEntry entry;
     entry.term = 1;
     entry.index = 0;
@@ -52,6 +61,7 @@ int main(int argc, char* argv[])
         Logger::getInstance().log(Logger::Level::INFO, "Command key : " + cmd.key + " Command value:" + cmd.value );
     // cmd.key, cmd.value are accessible
     }
+    */
     return 0 ;
 
 }

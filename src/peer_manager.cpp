@@ -13,7 +13,7 @@ PeerManager::PeerManager(const NodeConfig& nodeConfig)
     }
 }
 
-void PeerManager::sendMessageToNode(const std::string& nodeID, const std::string& message)
+void PeerManager::sendMessageToNode(const std::string& nodeID, const std::vector<uint8_t>& inRawByteMessage)
 {
 
    auto it = m_peerConnectionMap.find(nodeID);
@@ -22,7 +22,7 @@ void PeerManager::sendMessageToNode(const std::string& nodeID, const std::string
         if(it->second->isConnected())
         {
 
-           it->second->sendDataToPeers(message);
+           it->second->sendDataToPeers(inRawByteMessage);
         }
         else
         {
@@ -38,14 +38,27 @@ void PeerManager::sendMessageToNode(const std::string& nodeID, const std::string
     }
 }
 
-void PeerManager::sendMessageToAllNodes(const std::string& message)
+void PeerManager::sendMessageToAllNodes(const std::vector<uint8_t>& inRawByteMessage)
 {
     for(const auto& [key , _] : m_peerConnectionMap)
     {
 
-        sendMessageToNode(key, message);
+        sendMessageToNode(key, inRawByteMessage);
     }
 
 }
 
+int PeerManager::totalNodesConnected()
+{
+    int count = 0 ;
+    for(const auto& [key , value] : m_peerConnectionMap)
+    {
+        if(value->isConnected())
+        {
+            count++;
+        }   
+    }
+
+    return count ;
+}
     

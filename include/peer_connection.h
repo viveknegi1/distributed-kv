@@ -21,6 +21,6 @@ class PeerConnection
         PeerConnection(std::string inNodeID, int inPortAddress );
         ~PeerConnection();
         bool isConnected() const ;
-        void sendDataToPeers(const std::string& inData);
+        void sendDataToPeers(const std::vector<uint8_t>& inRawBytesData);
 
 };

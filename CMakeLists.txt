@@ -16,5 +16,7 @@ add_executable(distributed-kv
     src/peer_manager.cpp
     src/rpc_server.cpp
     src/replication_log.cpp
+    src/raft_node.cpp
+    src/message.cpp
 )
 target_include_directories(distributed-kv PRIVATE include)

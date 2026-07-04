@@ -54,9 +54,21 @@ bool PeerConnection::isConnected() const
   return m_isConnected ;
 }
         
-void PeerConnection::sendDataToPeers(const std::string& inData)
+void PeerConnection::sendDataToPeers(const std::vector<uint8_t>& inRawBytesData)
 {
-    Logger::getInstance().log(Logger::Level::INFO, "Recieved string data" + inData + " to send to peers");
+    size_t totalSent = 0;
+    while (totalSent < inRawBytesData.size()) 
+    {
+        ssize_t sent = send(m_fileDescriptor, 
+                        inRawBytesData.data() + totalSent, 
+                        inRawBytesData.size() - totalSent, 0);
+        if (sent == -1) 
+        {
+            Logger::getInstance().log(Logger::Level::ERROR, "Problem sending raw data");
+            break;
+        }
+        totalSent += sent;
+    }   
 }
 
  PeerConnection::~PeerConnection()

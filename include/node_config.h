@@ -14,7 +14,7 @@ class NodeConfig{
     std::string getAddressOFNode(const std::string& inNodeID) const ;
     std::string getNodeIdOnPortAddress(const std::string& inPortAddress) const;
     std::vector<PeerStruct> getAllOtherNodes() const ;
-    
+    std::string getOwnNodeID() const ;
 
     private:
     std::string m_nodeId ; // our nodeID

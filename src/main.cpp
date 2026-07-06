@@ -8,11 +8,13 @@
 #include <message.h>
 #include <replication_log.h>
 #include "raft_node.h"
+#include <signal.h>
 
 int main(int argc, char* argv[])
 {
 
-     if (argc != 2) {
+    signal(SIGPIPE, SIG_IGN); 
+    if (argc != 2) {
         std::cout << "Usage: " << argv[0] << " <your_argument>" << std::endl;
         Logger::getInstance().log(Logger::Level::INFO, std::string ("Usage: ") + argv[0] + " <your_arguments>");
         return 1; 

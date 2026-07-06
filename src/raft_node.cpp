@@ -13,19 +13,17 @@ RaftNode::RaftNode(NodeConfig& inNodeConfig , PeerManager& inPeerManager, Replic
 
 void RaftNode::start()
 {
-
     m_electionThread = std::thread(&RaftNode::runElectionTimer, this);
-
 }
 
 void RaftNode::runElectionTimer()
 {
-    while(m_peerManagerObj.totalNodesConnected() < 2)
+    // After every hundered milliseconds check if connected nodes are more than one.
+    while(m_peerManagerObj.totalNodesConnected() < 1)
     {
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
-  // m_peerManagerObj.sendMessageToAllNodes("Total nodes connected are " + std::to_string(m_peerManagerObj.totalNodesConnected()));
-   
+ 
     while(!m_shouldStop)
     {
         std::mt19937 rng(std::random_device{}());
@@ -35,17 +33,25 @@ void RaftNode::runElectionTimer()
         bool timedOut = !m_cv.wait_for(lock, std::chrono::milliseconds(timeout),
         [this] { return m_heartbeatReceived.load(); });
         m_heartbeatReceived = false ;
-        if(timedOut && m_state ==  RaftNode::NodeState::Follower)
+
+        // If we didn't recieve any heartbeat we must start our own election to select leader
+        if(timedOut)
         {   
-            startElection();
+            m_votedFor = "";
+            // election should start if we are either a follower or a candidate. It might happen that during our
+            // last candidature , no leader was selected. 
+            if(m_state == NodeState::Follower || m_state == NodeState::Candidate)
+            {
+                startElection();
+            } 
         }
-    }   
+    }
+      
 }
 
 void RaftNode::startElection()
 {
-    Logger::getInstance().log(Logger::Level::INFO, "startElection called, lastLogIndex: " + 
-    std::to_string(m_replicationLogObj.getLastAppendedIndex()));
+    std::to_string(m_replicationLogObj.getLastAppendedIndex());
     if(!m_votedFor.empty())  // already voted this term — don't start election
     {
         return;
@@ -55,16 +61,16 @@ void RaftNode::startElection()
     auto ownNodeID = m_nodeConfigObj.getOwnNodeID();
     m_votedFor = ownNodeID ;
     
-        Logger::getInstance().log(Logger::Level::INFO, "Election has started from node Id " + ownNodeID);
-        m_voteCount = 1;
-        VoteRequestData voteRequestData ;
-        voteRequestData.candidateID = m_nodeConfigObj.getOwnNodeID();
-        voteRequestData.term = m_currentTerm;
-        voteRequestData.lastLogIndex = m_replicationLogObj.getLastAppendedIndex();
-        auto rawBytes = MessageSerializer::serializeVoteRequest(voteRequestData);
-        m_peerManagerObj.sendMessageToAllNodes(rawBytes);
+    Logger::getInstance().log(Logger::Level::INFO, "Election has started from node Id " + ownNodeID);
+    m_voteCount = 1;
+    VoteRequestData voteRequestData ;
+    voteRequestData.candidateID = m_nodeConfigObj.getOwnNodeID();
+    voteRequestData.term = m_currentTerm;
+    voteRequestData.lastLogIndex = m_replicationLogObj.getLastAppendedIndex();
+    auto rawBytes = MessageSerializer::serializeVoteRequest(voteRequestData);
+    m_peerManagerObj.sendMessageToAllNodes(rawBytes);
 
-        Logger::getInstance().log(Logger::Level::INFO, "startElection completed");
+    Logger::getInstance().log(Logger::Level::INFO, "startElection completed");
     
 
 }
@@ -76,6 +82,7 @@ void RaftNode::becomeFollower()
     {
         m_state = NodeState::Follower;
         m_voteCount = 0;
+        m_currentLeaderID = "";
         Logger::getInstance().log(Logger::Level::INFO, "Became a follower");
     }
 }
@@ -83,17 +90,14 @@ void RaftNode::becomeFollower()
 
 void RaftNode::becomeLeader()
 {
-
     m_state =  RaftNode::NodeState::Leader;
     m_voteCount = 0 ;
     Logger::getInstance().log(Logger::Level::INFO, "Became a leader");
     m_heartBeatThread = std::thread(&RaftNode::sendHeartbeats, this);
-
 }
 
 void RaftNode::sendHeartbeats()
 {
-
     while(!m_shouldStop && m_state ==  RaftNode::NodeState::Leader)
     {
         HeartBeatData heartBeatData ;
@@ -128,11 +132,13 @@ void RaftNode::receiveVote(const int inTermCount, const bool inGranted)
 void RaftNode::receiveHeartBeat(const int term , const std::string& inLeaderId)
 {
     m_currentLeaderID = inLeaderId;
+    
     if( term > m_currentTerm)
     {
         m_currentTerm = term ;
         m_votedFor = "" ;
     }
+
     becomeFollower();
     m_heartbeatReceived = true;
     m_cv.notify_one();

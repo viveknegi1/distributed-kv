@@ -2,6 +2,7 @@
 #include <string>
 #include <thread>
 #include <atomic>
+#include <mutex>
 
 class PeerConnection
 {
@@ -15,6 +16,7 @@ class PeerConnection
         std::atomic<bool> m_isConnected = false ;
         std::atomic<bool> m_shouldStop = false ;
         bool establishConnection();
+        std::mutex m_connectionMutex ;
     
     
     public:

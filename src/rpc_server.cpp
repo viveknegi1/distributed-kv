@@ -120,7 +120,6 @@ void RpcServer::handleConnection(int socketFd)
         {
             if( buffer.at(0) ==  static_cast<uint8_t>(MessageType::VOTE_REQUEST) )
             {
-                
                 // Read term (4 bytes)
                 std::vector<uint8_t> termBuffer;
                 recvAll(socketFd, termBuffer, 4);
@@ -216,7 +215,6 @@ void RpcServer::handleConnection(int socketFd)
 
         else
         {
-
             Logger::getInstance().log(Logger::Level::ERROR, "Client Disconnected or insufficeint data"); 
             break ;
         }
@@ -245,7 +243,5 @@ RpcServer::~RpcServer()
 
 void RpcServer::setRaftNode(RaftNode* inRaftNode)
 {
-
     m_raftNode = inRaftNode ;
-
 }

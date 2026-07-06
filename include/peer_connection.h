@@ -6,7 +6,6 @@
 
 class PeerConnection
 {
-
     private:
         std::string m_nodeID ;
         int m_portAddress;
@@ -24,5 +23,4 @@ class PeerConnection
         ~PeerConnection();
         bool isConnected() const ;
         void sendDataToPeers(const std::vector<uint8_t>& inRawBytesData);
-
 };

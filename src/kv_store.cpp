@@ -66,7 +66,6 @@ void KvStore::flush()
     }
    
 }
-
   
 std::unordered_map<std::string, std::string> KvStore::getSnapShot() const
 {

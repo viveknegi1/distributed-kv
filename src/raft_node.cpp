@@ -27,7 +27,7 @@ void RaftNode::runElectionTimer()
     while(!m_shouldStop)
     {
         std::mt19937 rng(std::random_device{}());
-        std::uniform_int_distribution<int> dist(1000, 2000);
+        std::uniform_int_distribution<int> dist(500, 3000);
         int timeout = dist(rng);
         std::unique_lock<std::mutex> lock(m_mutex);
         bool timedOut = !m_cv.wait_for(lock, std::chrono::milliseconds(timeout),
@@ -72,9 +72,7 @@ void RaftNode::startElection()
 
     Logger::getInstance().log(Logger::Level::INFO, "startElection completed");
     
-
 }
-
 
 void RaftNode::becomeFollower()
 {
@@ -132,7 +130,7 @@ void RaftNode::receiveVote(const int inTermCount, const bool inGranted)
 void RaftNode::receiveHeartBeat(const int term , const std::string& inLeaderId)
 {
     m_currentLeaderID = inLeaderId;
-    
+
     if( term > m_currentTerm)
     {
         m_currentTerm = term ;
@@ -146,6 +144,13 @@ void RaftNode::receiveHeartBeat(const int term , const std::string& inLeaderId)
 
 void RaftNode::requestVote(const std::string& inCandidateId, int termCount, int lastLoggedIndex)
 {
+    if(termCount > m_currentTerm)
+    {
+        m_currentTerm = termCount;
+        m_votedFor = "";  // new term — can vote again
+        m_state = NodeState::Follower;
+    }
+
     VoteResponseData response;
     response.term = m_currentTerm;
     

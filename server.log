@@ -43221,3 +43221,528 @@
 [ Mon Jul  6 13:24:46 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
 [ Mon Jul  6 13:24:47 2026 ] [ ERROR ] Unable to connect
 [ Mon Jul  6 13:24:47 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Mon Jul  6 21:02:01 2026 ] [ INFO ] Our node id is: 1
+[ Mon Jul  6 21:02:01 2026 ] [ INFO ] Our port address is : 8081
+[ Mon Jul  6 21:02:01 2026 ] [ ERROR ] Unable to connect
+[ Mon Jul  6 21:02:01 2026 ] [ ERROR ] Unable to connect
+[ Mon Jul  6 21:02:01 2026 ] [ ERROR ] Unable to connect
+[ Mon Jul  6 21:02:01 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Mon Jul  6 21:02:01 2026 ] [ ERROR ] Unable to connect
+[ Mon Jul  6 21:02:01 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Mon Jul  6 21:02:03 2026 ] [ ERROR ] Unable to connect
+[ Mon Jul  6 21:02:03 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Mon Jul  6 21:02:03 2026 ] [ ERROR ] Unable to connect
+[ Mon Jul  6 21:02:03 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Mon Jul  6 21:02:04 2026 ] [ INFO ] Our node id is: 2
+[ Mon Jul  6 21:02:04 2026 ] [ INFO ] Our port address is : 8082
+[ Mon Jul  6 21:02:04 2026 ] [ ERROR ] Unable to connect
+[ Mon Jul  6 21:02:04 2026 ] [ ERROR ] Unable to connect
+[ Mon Jul  6 21:02:04 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Mon Jul  6 21:02:05 2026 ] [ ERROR ] Unable to connect
+[ Mon Jul  6 21:02:05 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Mon Jul  6 21:02:05 2026 ] [ INFO ] Connected to port 8082
+[ Mon Jul  6 21:02:06 2026 ] [ INFO ] Election has started from node Id 2
+[ Mon Jul  6 21:02:06 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:06 2026 ] [ INFO ] startElection completed
+[ Mon Jul  6 21:02:06 2026 ] [ INFO ] Vote granted for 2
+[ Mon Jul  6 21:02:06 2026 ] [ INFO ] Became a leader
+[ Mon Jul  6 21:02:06 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:06 2026 ] [ ERROR ] Unable to connect
+[ Mon Jul  6 21:02:06 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Mon Jul  6 21:02:06 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:06 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:07 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:07 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:07 2026 ] [ INFO ] Our node id is: 3
+[ Mon Jul  6 21:02:07 2026 ] [ INFO ] Our port address is : 8083
+[ Mon Jul  6 21:02:07 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:07 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:07 2026 ] [ INFO ] Connected to port 8083
+[ Mon Jul  6 21:02:07 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:07 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:07 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:07 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:07 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:07 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:08 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:08 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:08 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:08 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:08 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:08 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:08 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:08 2026 ] [ INFO ] Connected to port 8083
+[ Mon Jul  6 21:02:08 2026 ] [ INFO ] Election has started from node Id 3
+[ Mon Jul  6 21:02:08 2026 ] [ INFO ] startElection completed
+[ Mon Jul  6 21:02:08 2026 ] [ INFO ] Vote granted for 3
+[ Mon Jul  6 21:02:08 2026 ] [ INFO ] Vote granted for 3
+[ Mon Jul  6 21:02:08 2026 ] [ INFO ] Became a leader
+[ Mon Jul  6 21:02:08 2026 ] [ INFO ] Became a follower
+[ Mon Jul  6 21:02:19 2026 ] [ ERROR ] Client Disconnected or insufficeint data
+[ Mon Jul  6 21:02:19 2026 ] [ ERROR ] Client Disconnected or insufficeint data
+[ Mon Jul  6 21:02:21 2026 ] [ INFO ] Election has started from node Id 2
+[ Mon Jul  6 21:02:21 2026 ] [ INFO ] startElection completed
+[ Mon Jul  6 21:02:21 2026 ] [ INFO ] Vote denied for 2
+[ Mon Jul  6 21:02:21 2026 ] [ INFO ] Election has started from node Id 1
+[ Mon Jul  6 21:02:21 2026 ] [ INFO ] startElection completed
+[ Mon Jul  6 21:02:21 2026 ] [ INFO ] Vote denied for 1
+[ Mon Jul  6 21:02:22 2026 ] [ INFO ] Election has started from node Id 2
+[ Mon Jul  6 21:02:22 2026 ] [ ERROR ] Problem sending raw data . Setting m_isConnected to false
+[ Mon Jul  6 21:02:22 2026 ] [ INFO ] startElection completed
+[ Mon Jul  6 21:02:22 2026 ] [ INFO ] Vote denied for 2
+[ Mon Jul  6 21:02:22 2026 ] [ ERROR ] Unable to connect
+[ Mon Jul  6 21:02:22 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Mon Jul  6 21:02:23 2026 ] [ INFO ] Election has started from node Id 1
+[ Mon Jul  6 21:02:23 2026 ] [ ERROR ] Problem sending raw data . Setting m_isConnected to false
+[ Mon Jul  6 21:02:23 2026 ] [ INFO ] startElection completed
+[ Mon Jul  6 21:02:23 2026 ] [ INFO ] Vote denied for 1
+[ Mon Jul  6 21:02:23 2026 ] [ ERROR ] Unable to connect
+[ Mon Jul  6 21:02:23 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Mon Jul  6 21:02:24 2026 ] [ INFO ] Election has started from node Id 2
+[ Mon Jul  6 21:02:24 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:24 2026 ] [ INFO ] startElection completed
+[ Mon Jul  6 21:02:24 2026 ] [ INFO ] Vote denied for 2
+[ Mon Jul  6 21:02:24 2026 ] [ INFO ] Election has started from node Id 1
+[ Mon Jul  6 21:02:24 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:24 2026 ] [ INFO ] startElection completed
+[ Mon Jul  6 21:02:24 2026 ] [ INFO ] Vote denied for 1
+[ Mon Jul  6 21:02:24 2026 ] [ ERROR ] Unable to connect
+[ Mon Jul  6 21:02:24 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Mon Jul  6 21:02:25 2026 ] [ ERROR ] Unable to connect
+[ Mon Jul  6 21:02:25 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Mon Jul  6 21:02:25 2026 ] [ INFO ] Election has started from node Id 2
+[ Mon Jul  6 21:02:25 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:25 2026 ] [ INFO ] startElection completed
+[ Mon Jul  6 21:02:25 2026 ] [ INFO ] Vote denied for 2
+[ Mon Jul  6 21:02:26 2026 ] [ INFO ] Election has started from node Id 1
+[ Mon Jul  6 21:02:26 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:26 2026 ] [ INFO ] startElection completed
+[ Mon Jul  6 21:02:26 2026 ] [ INFO ] Vote denied for 1
+[ Mon Jul  6 21:02:26 2026 ] [ ERROR ] Unable to connect
+[ Mon Jul  6 21:02:26 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Mon Jul  6 21:02:27 2026 ] [ INFO ] Election has started from node Id 2
+[ Mon Jul  6 21:02:27 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:27 2026 ] [ INFO ] startElection completed
+[ Mon Jul  6 21:02:27 2026 ] [ INFO ] Vote denied for 2
+[ Mon Jul  6 21:02:27 2026 ] [ ERROR ] Unable to connect
+[ Mon Jul  6 21:02:27 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Mon Jul  6 21:02:28 2026 ] [ INFO ] Election has started from node Id 1
+[ Mon Jul  6 21:02:28 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:28 2026 ] [ INFO ] startElection completed
+[ Mon Jul  6 21:02:28 2026 ] [ INFO ] Vote denied for 1
+[ Mon Jul  6 21:02:28 2026 ] [ INFO ] Election has started from node Id 2
+[ Mon Jul  6 21:02:28 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:28 2026 ] [ INFO ] startElection completed
+[ Mon Jul  6 21:02:28 2026 ] [ INFO ] Vote denied for 2
+[ Mon Jul  6 21:02:28 2026 ] [ ERROR ] Unable to connect
+[ Mon Jul  6 21:02:28 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Mon Jul  6 21:02:29 2026 ] [ INFO ] Election has started from node Id 1
+[ Mon Jul  6 21:02:29 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:29 2026 ] [ INFO ] startElection completed
+[ Mon Jul  6 21:02:29 2026 ] [ INFO ] Vote denied for 1
+[ Mon Jul  6 21:02:29 2026 ] [ ERROR ] Unable to connect
+[ Mon Jul  6 21:02:29 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Mon Jul  6 21:02:30 2026 ] [ INFO ] Election has started from node Id 2
+[ Mon Jul  6 21:02:30 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:30 2026 ] [ INFO ] startElection completed
+[ Mon Jul  6 21:02:30 2026 ] [ INFO ] Vote denied for 2
+[ Mon Jul  6 21:02:30 2026 ] [ INFO ] Election has started from node Id 1
+[ Mon Jul  6 21:02:30 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:30 2026 ] [ INFO ] startElection completed
+[ Mon Jul  6 21:02:30 2026 ] [ INFO ] Vote denied for 1
+[ Mon Jul  6 21:02:30 2026 ] [ ERROR ] Unable to connect
+[ Mon Jul  6 21:02:30 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Mon Jul  6 21:02:31 2026 ] [ ERROR ] Unable to connect
+[ Mon Jul  6 21:02:31 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Mon Jul  6 21:02:31 2026 ] [ INFO ] Election has started from node Id 1
+[ Mon Jul  6 21:02:31 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:31 2026 ] [ INFO ] startElection completed
+[ Mon Jul  6 21:02:31 2026 ] [ INFO ] Vote denied for 1
+[ Mon Jul  6 21:02:31 2026 ] [ INFO ] Election has started from node Id 2
+[ Mon Jul  6 21:02:31 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:31 2026 ] [ INFO ] startElection completed
+[ Mon Jul  6 21:02:31 2026 ] [ INFO ] Vote denied for 2
+[ Mon Jul  6 21:02:32 2026 ] [ ERROR ] Unable to connect
+[ Mon Jul  6 21:02:32 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Mon Jul  6 21:02:32 2026 ] [ INFO ] Election has started from node Id 2
+[ Mon Jul  6 21:02:32 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:32 2026 ] [ INFO ] startElection completed
+[ Mon Jul  6 21:02:32 2026 ] [ INFO ] Vote denied for 2
+[ Mon Jul  6 21:02:33 2026 ] [ INFO ] Election has started from node Id 1
+[ Mon Jul  6 21:02:33 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:33 2026 ] [ INFO ] startElection completed
+[ Mon Jul  6 21:02:33 2026 ] [ INFO ] Vote denied for 1
+[ Mon Jul  6 21:02:33 2026 ] [ ERROR ] Unable to connect
+[ Mon Jul  6 21:02:33 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Mon Jul  6 21:02:34 2026 ] [ INFO ] Election has started from node Id 2
+[ Mon Jul  6 21:02:34 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:34 2026 ] [ INFO ] startElection completed
+[ Mon Jul  6 21:02:34 2026 ] [ INFO ] Vote denied for 2
+[ Mon Jul  6 21:02:34 2026 ] [ INFO ] Election has started from node Id 1
+[ Mon Jul  6 21:02:34 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:34 2026 ] [ INFO ] startElection completed
+[ Mon Jul  6 21:02:34 2026 ] [ INFO ] Vote denied for 1
+[ Mon Jul  6 21:02:34 2026 ] [ ERROR ] Unable to connect
+[ Mon Jul  6 21:02:34 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Mon Jul  6 21:02:35 2026 ] [ ERROR ] Unable to connect
+[ Mon Jul  6 21:02:35 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Mon Jul  6 21:02:36 2026 ] [ INFO ] Election has started from node Id 2
+[ Mon Jul  6 21:02:36 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:36 2026 ] [ INFO ] startElection completed
+[ Mon Jul  6 21:02:36 2026 ] [ INFO ] Vote denied for 2
+[ Mon Jul  6 21:02:36 2026 ] [ INFO ] Election has started from node Id 1
+[ Mon Jul  6 21:02:36 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:36 2026 ] [ INFO ] startElection completed
+[ Mon Jul  6 21:02:36 2026 ] [ INFO ] Vote denied for 1
+[ Mon Jul  6 21:02:36 2026 ] [ ERROR ] Unable to connect
+[ Mon Jul  6 21:02:36 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Mon Jul  6 21:02:37 2026 ] [ ERROR ] Unable to connect
+[ Mon Jul  6 21:02:37 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Mon Jul  6 21:02:37 2026 ] [ INFO ] Election has started from node Id 1
+[ Mon Jul  6 21:02:37 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:37 2026 ] [ INFO ] startElection completed
+[ Mon Jul  6 21:02:37 2026 ] [ INFO ] Vote denied for 1
+[ Mon Jul  6 21:02:38 2026 ] [ INFO ] Election has started from node Id 2
+[ Mon Jul  6 21:02:38 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:38 2026 ] [ INFO ] startElection completed
+[ Mon Jul  6 21:02:38 2026 ] [ INFO ] Vote denied for 2
+[ Mon Jul  6 21:02:38 2026 ] [ ERROR ] Unable to connect
+[ Mon Jul  6 21:02:38 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Mon Jul  6 21:02:39 2026 ] [ INFO ] Election has started from node Id 1
+[ Mon Jul  6 21:02:39 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:39 2026 ] [ INFO ] startElection completed
+[ Mon Jul  6 21:02:39 2026 ] [ INFO ] Vote denied for 1
+[ Mon Jul  6 21:02:39 2026 ] [ ERROR ] Unable to connect
+[ Mon Jul  6 21:02:39 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Mon Jul  6 21:02:39 2026 ] [ INFO ] Election has started from node Id 2
+[ Mon Jul  6 21:02:39 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:39 2026 ] [ INFO ] startElection completed
+[ Mon Jul  6 21:02:39 2026 ] [ INFO ] Vote denied for 2
+[ Mon Jul  6 21:02:40 2026 ] [ ERROR ] Client Disconnected or insufficeint data
+[ Mon Jul  6 21:02:40 2026 ] [ INFO ] Election has started from node Id 1
+[ Mon Jul  6 21:02:40 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:40 2026 ] [ INFO ] startElection completed
+[ Mon Jul  6 21:02:41 2026 ] [ ERROR ] Unable to connect
+[ Mon Jul  6 21:02:41 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Mon Jul  6 21:02:41 2026 ] [ INFO ] Election has started from node Id 1
+[ Mon Jul  6 21:02:41 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Mon Jul  6 21:02:41 2026 ] [ ERROR ] Problem sending raw data . Setting m_isConnected to false
+[ Mon Jul  6 21:02:41 2026 ] [ INFO ] startElection completed
+[ Mon Jul  6 21:02:42 2026 ] [ ERROR ] Unable to connect
+[ Mon Jul  6 21:02:42 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Wed Jul  8 09:38:55 2026 ] [ INFO ] Our node id is: 1
+[ Wed Jul  8 09:38:55 2026 ] [ INFO ] Our port address is : 8081
+[ Wed Jul  8 09:38:55 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  8 09:38:55 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  8 09:38:55 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Wed Jul  8 09:38:55 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  8 09:38:55 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  8 09:38:55 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Wed Jul  8 09:38:57 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  8 09:38:57 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Wed Jul  8 09:38:57 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  8 09:38:57 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Wed Jul  8 09:38:57 2026 ] [ INFO ] Our node id is: 2
+[ Wed Jul  8 09:38:57 2026 ] [ INFO ] Our port address is : 8082
+[ Wed Jul  8 09:38:57 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  8 09:38:57 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  8 09:38:57 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Wed Jul  8 09:38:59 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  8 09:38:59 2026 ] [ INFO ] Connected to port 8082
+[ Wed Jul  8 09:38:59 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Wed Jul  8 09:38:59 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  8 09:38:59 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Wed Jul  8 09:39:00 2026 ] [ INFO ] Election has started from node Id 2
+[ Wed Jul  8 09:39:00 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Wed Jul  8 09:39:00 2026 ] [ INFO ] startElection completed
+[ Wed Jul  8 09:39:00 2026 ] [ INFO ] Vote granted for 2
+[ Wed Jul  8 09:39:00 2026 ] [ INFO ] Became a leader
+[ Wed Jul  8 09:39:00 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Wed Jul  8 09:39:00 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Wed Jul  8 09:39:00 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Wed Jul  8 09:39:00 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Wed Jul  8 09:39:00 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Wed Jul  8 09:39:00 2026 ] [ INFO ] Our node id is: 3
+[ Wed Jul  8 09:39:00 2026 ] [ INFO ] Our port address is : 8083
+[ Wed Jul  8 09:39:00 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Wed Jul  8 09:39:00 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Wed Jul  8 09:39:01 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Wed Jul  8 09:39:01 2026 ] [ INFO ] Connected to port 8083
+[ Wed Jul  8 09:39:01 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Wed Jul  8 09:39:01 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Wed Jul  8 09:39:01 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Wed Jul  8 09:39:01 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Wed Jul  8 09:39:01 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Wed Jul  8 09:39:01 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Wed Jul  8 09:39:01 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Wed Jul  8 09:39:01 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Wed Jul  8 09:39:01 2026 ] [ INFO ] Election has started from node Id 3
+[ Wed Jul  8 09:39:01 2026 ] [ INFO ] startElection completed
+[ Wed Jul  8 09:39:01 2026 ] [ INFO ] Vote denied for 3
+[ Wed Jul  8 09:39:01 2026 ] [ INFO ] Vote denied for 3
+[ Wed Jul  8 09:39:01 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Wed Jul  8 09:39:01 2026 ] [ ERROR ] Node ID 3 is not connected
+[ Wed Jul  8 09:39:01 2026 ] [ INFO ] Connected to port 8083
+[ Wed Jul  8 09:39:02 2026 ] [ INFO ] Became a follower
+[ Wed Jul  8 09:41:54 2026 ] [ ERROR ] Client Disconnected or insufficeint data
+[ Wed Jul  8 09:41:54 2026 ] [ ERROR ] Client Disconnected or insufficeint data
+[ Wed Jul  8 09:41:55 2026 ] [ INFO ] Election has started from node Id 1
+[ Wed Jul  8 09:41:55 2026 ] [ INFO ] startElection completed
+[ Wed Jul  8 09:41:55 2026 ] [ INFO ] Vote granted for 1
+[ Wed Jul  8 09:41:55 2026 ] [ INFO ] Became a leader
+[ Wed Jul  8 09:41:55 2026 ] [ ERROR ] Problem sending raw data . Setting m_isConnected to false
+[ Wed Jul  8 09:41:56 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  8 09:41:56 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Wed Jul  8 09:41:56 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:56 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:56 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:56 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:56 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:56 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:56 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:56 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:56 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:56 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:57 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:57 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:57 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:57 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:57 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:57 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:57 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:57 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:57 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:58 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:58 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  8 09:41:58 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Wed Jul  8 09:41:58 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:58 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:58 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:58 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:58 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:58 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:58 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:58 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:58 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:59 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:59 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:59 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:59 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:59 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:59 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:59 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:59 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:41:59 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:00 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:00 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  8 09:42:00 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Wed Jul  8 09:42:00 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:00 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:00 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:00 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:00 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:00 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:00 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:00 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:00 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:01 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:01 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:01 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:01 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:01 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:01 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:01 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:01 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:01 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:01 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:02 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  8 09:42:02 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Wed Jul  8 09:42:02 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:02 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:02 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:02 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:02 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:02 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:02 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:02 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:02 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:03 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:03 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:03 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:03 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:03 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:03 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:03 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:03 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:03 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:03 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:04 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  8 09:42:04 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Wed Jul  8 09:42:04 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:04 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:04 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:04 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:04 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:04 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:04 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:04 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:04 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:05 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:05 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:05 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:05 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:05 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:05 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:05 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:05 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:05 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:05 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:06 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:06 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  8 09:42:06 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Wed Jul  8 09:42:06 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:06 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:06 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:06 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:06 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:06 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:06 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:06 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:06 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:07 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:07 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:07 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:07 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:07 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:07 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:07 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:07 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:07 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:08 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:08 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  8 09:42:08 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Wed Jul  8 09:42:08 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:08 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:08 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:08 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:08 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:08 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:08 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:08 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:08 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:09 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:09 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:09 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:09 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:09 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:09 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:09 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:09 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:09 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:10 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:10 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  8 09:42:10 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Wed Jul  8 09:42:10 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:10 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:10 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:10 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:10 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:10 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:10 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:10 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:10 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:11 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:11 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:11 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:11 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:11 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:11 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:11 2026 ] [ INFO ] Our node id is: 2
+[ Wed Jul  8 09:42:11 2026 ] [ INFO ] Our port address is : 8082
+[ Wed Jul  8 09:42:11 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:11 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:11 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:11 2026 ] [ ERROR ] Node ID 2 is not connected
+[ Wed Jul  8 09:42:12 2026 ] [ INFO ] Connected to port 8082
+[ Wed Jul  8 09:45:10 2026 ] [ ERROR ] Client Disconnected or insufficeint data
+[ Wed Jul  8 09:45:10 2026 ] [ ERROR ] Client Disconnected or insufficeint data
+[ Wed Jul  8 09:45:12 2026 ] [ INFO ] Election has started from node Id 2
+[ Wed Jul  8 09:45:12 2026 ] [ INFO ] startElection completed
+[ Wed Jul  8 09:45:12 2026 ] [ INFO ] Vote granted for 2
+[ Wed Jul  8 09:45:12 2026 ] [ ERROR ] Problem sending raw data . Setting m_isConnected to false
+[ Wed Jul  8 09:45:12 2026 ] [ INFO ] Connected to port 8082
+[ Wed Jul  8 09:45:12 2026 ] [ INFO ] Election has started from node Id 3
+[ Wed Jul  8 09:45:12 2026 ] [ INFO ] startElection completed
+[ Wed Jul  8 09:45:12 2026 ] [ INFO ] Vote granted for 3
+[ Wed Jul  8 09:45:12 2026 ] [ INFO ] Became a leader
+[ Wed Jul  8 09:45:12 2026 ] [ ERROR ] Problem sending raw data . Setting m_isConnected to false
+[ Wed Jul  8 09:45:12 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  8 09:45:12 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Wed Jul  8 09:45:12 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:12 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:13 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:13 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:13 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:13 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:13 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:13 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:13 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:13 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:13 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:13 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:14 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:14 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:14 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:14 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:14 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:14 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:14 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:14 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  8 09:45:14 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Wed Jul  8 09:45:14 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:14 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:15 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:15 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:15 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:15 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:15 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:15 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:15 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:15 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:15 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:15 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:16 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:16 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:16 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:16 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:16 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:16 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:16 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:16 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:16 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  8 09:45:16 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Wed Jul  8 09:45:16 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:17 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:17 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:17 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:17 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:17 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:17 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:17 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:17 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:17 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:17 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:18 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:18 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:18 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:18 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:18 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:18 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:18 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:18 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:18 2026 ] [ ERROR ] Unable to connect
+[ Wed Jul  8 09:45:18 2026 ] [ ERROR ] Connection failed, retrying in 2 seconds
+[ Wed Jul  8 09:45:18 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:18 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:19 2026 ] [ ERROR ] Node ID 1 is not connected
+[ Wed Jul  8 09:45:19 2026 ] [ ERROR ] Node ID 1 is not connected

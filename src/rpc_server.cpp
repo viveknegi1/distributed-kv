@@ -150,7 +150,6 @@ void RpcServer::handleConnection(int socketFd)
                 auto lastLogIndex = voteRequestStruct.lastLogIndex;
                 m_raftNode->requestVote(candidateId, term , lastLogIndex);
                 
-            
             }
 
             else if(buffer.at(0) ==  static_cast<uint8_t>(MessageType::VOTE_RESPONSE))

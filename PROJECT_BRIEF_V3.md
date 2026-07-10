@@ -115,7 +115,7 @@ distributed-kv/
 
 ## ✅ Current Status
 
-**Current Phase:** 4
+**Current Phase:** 5
 **Status:** Complete
 
 ### Prerequisites (complete before Day 1)
@@ -213,4 +213,4 @@ committed entries are applied to the KV store.
 prove it's alive and reset their election timers.
 
 ---
-*Last updated: Day 4 - Complete*
+*Last updated: Day 5 - Complete*

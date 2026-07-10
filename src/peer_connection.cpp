@@ -8,13 +8,12 @@
 #include <thread>
 #include <chrono>
 
- PeerConnection::PeerConnection(std::string inNodeID, int inPortAddress) : m_nodeID(inNodeID) , m_portAddress(inPortAddress)
- { 
+PeerConnection::PeerConnection(std::string inNodeID, int inPortAddress) : m_nodeID(inNodeID) , m_portAddress(inPortAddress)
+{ 
     // The constructor immediately invokes the connection logic
     establishConnection();
     m_thread = std::thread(&PeerConnection::retryConnection, this);    
-    
- }
+}
 
 bool PeerConnection::establishConnection()
 {
@@ -39,8 +38,7 @@ bool PeerConnection::establishConnection()
     addr.sin_family = AF_INET;
     addr.sin_port = htons(m_portAddress);
     addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK); 
-
-    
+  
     // 3. Attempt the network handshake
     if (connect(m_fileDescriptor, (struct sockaddr*)&addr, sizeof(addr)) != 0) 
     {
@@ -58,7 +56,6 @@ bool PeerConnection::establishConnection()
     return true;
 
 }
-
 
 bool PeerConnection::isConnected() const
 {

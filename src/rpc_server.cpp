@@ -10,24 +10,23 @@
 
 namespace
 {
-
-bool recvAll(int inSocketFd, std::vector<uint8_t>& opBuffer, size_t inNumBytes) {
-    opBuffer.resize(inNumBytes);
-    size_t totalRead = 0;
-    while (totalRead < inNumBytes) 
+    bool recvAll(int inSocketFd, std::vector<uint8_t>& opBuffer, size_t inNumBytes) 
     {
-        ssize_t received = recv(inSocketFd, opBuffer.data() + totalRead, 
-                               inNumBytes - totalRead, 0);
-        if (received <= 0) 
+        opBuffer.resize(inNumBytes);
+        size_t totalRead = 0;
+        while (totalRead < inNumBytes) 
         {
-            return false;
+            ssize_t received = recv(inSocketFd, opBuffer.data() + totalRead, 
+                               inNumBytes - totalRead, 0);
+            if (received <= 0) 
+            {
+                return false;
+            }
+            totalRead += received;
         }
-        totalRead += received;
+        return true;
     }
-    return true;
 }
-}
-
 
 RpcServer::RpcServer(int portNum)
 {
@@ -63,7 +62,6 @@ bool RpcServer::initialize()
     int opt = 1;
     setsockopt(m_serverSocket, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
     return true ;
-
 }
 
 bool RpcServer::bindSocket()
@@ -152,7 +150,7 @@ void RpcServer::handleConnection(int socketFd)
                 
             }
 
-            else if(buffer.at(0) ==  static_cast<uint8_t>(MessageType::VOTE_RESPONSE))
+            else if (buffer.at(0) ==  static_cast<uint8_t>(MessageType::VOTE_RESPONSE))
             {
 
                 // Read term (4 bytes)
@@ -170,7 +168,7 @@ void RpcServer::handleConnection(int socketFd)
                 auto voteResponseStruct = MessageSerializer::deserializeVoteResponse(resultBuffer);
                 auto term = voteResponseStruct.term ;
                 auto voteGranted = voteResponseStruct.granted;
-                 m_raftNode->receiveVote( term , voteGranted);
+                m_raftNode->receiveVote( term , voteGranted);
                
             }
 
@@ -203,25 +201,106 @@ void RpcServer::handleConnection(int socketFd)
                 m_raftNode->receiveHeartBeat(term ,leaderID);
 
             }
+
+            else if(buffer.at(0) ==  static_cast<uint8_t>(MessageType::CLIENT_WRITE))
+            {
+                if(m_raftNode->isLeader())
+                {
+
+                    // Read term (4 bytes)
+                    std::vector<uint8_t> termBuffer;
+                    recvAll(socketFd, termBuffer, 4);
+
+                    // Read type of write request ( SET, DEL, FLUSH  1 byte)
+                    std::vector<uint8_t> reqBuffer;
+                    recvAll(socketFd, reqBuffer, 1);
+                    uint8_t typeOfReqyest = reqBuffer[0];
+
+                    std::vector<uint8_t> resultBuffer;
+
+                    if(typeOfReqyest == 1)
+                    {
+
+                        // Read Key length (1 byte)
+                        std::vector<uint8_t> keyLenBuffer;
+                        recvAll(socketFd, keyLenBuffer, 1);
+                        uint8_t keyLen = keyLenBuffer[0];
+
+                        // Read Key (keyLen bytes)
+                        std::vector<uint8_t> keyBuffer;
+                        recvAll(socketFd, keyBuffer, keyLen);
+
+                        // Read Value length (1 byte)
+                        std::vector<uint8_t> valueLenBuffer;
+                        recvAll(socketFd, valueLenBuffer, 1);
+                        uint8_t valLen = valueLenBuffer[0];
+
+                        // Read value (valLen bytes)
+                        std::vector<uint8_t> valBuffer;
+                        recvAll(socketFd, valBuffer, valLen);
+
+                        resultBuffer.reserve(termBuffer.size() + reqBuffer.size()+ keyLenBuffer.size() + keyBuffer.size() + valueLenBuffer.size() + valBuffer.size());
+                        resultBuffer.insert(resultBuffer.end(), termBuffer.begin(), termBuffer.end());
+                        resultBuffer.insert(resultBuffer.end(), reqBuffer.begin(), reqBuffer.end());
+                        resultBuffer.insert(resultBuffer.end(), keyLenBuffer.begin(), keyLenBuffer.end());
+                        resultBuffer.insert(resultBuffer.end(), keyBuffer.begin(), keyBuffer.end());
+                        resultBuffer.insert(resultBuffer.end(), valueLenBuffer.begin(), valueLenBuffer.end());
+                        resultBuffer.insert(resultBuffer.end(), valBuffer.begin(), valBuffer.end());        
+                    }
+
+                    else if (typeOfReqyest == 2)
+                    {
+
+                        // Read Key length (1 byte)
+                        std::vector<uint8_t> keyLenBuffer;
+                        recvAll(socketFd, keyLenBuffer, 1);
+                        uint8_t keyLen = keyLenBuffer[0];
+
+                        // Read Key (keyLen bytes)
+                        std::vector<uint8_t> keyBuffer;
+                        recvAll(socketFd, keyBuffer, keyLen);
+
+                        resultBuffer.reserve(termBuffer.size() + reqBuffer.size() + keyLenBuffer.size() + keyBuffer.size());
+                        resultBuffer.insert(resultBuffer.end(), termBuffer.begin(), termBuffer.end());
+                        resultBuffer.insert(resultBuffer.end(), reqBuffer.begin(), reqBuffer.end());
+                        resultBuffer.insert(resultBuffer.end(), keyLenBuffer.begin(), keyLenBuffer.end());
+                        resultBuffer.insert(resultBuffer.end(), keyBuffer.begin(), keyBuffer.end()) ;
+
+                    }
+                    else
+                    {
+                        resultBuffer.reserve(termBuffer.size() + reqBuffer.size());
+                        resultBuffer.insert(resultBuffer.end(), termBuffer.begin(), termBuffer.end());
+                        resultBuffer.insert(resultBuffer.end(), reqBuffer.begin(), reqBuffer.end());
+                    }
+                    auto clientWriteDataStruct = MessageSerializer::deserializeClientWriteRequest(resultBuffer);
+                    auto  command= clientWriteDataStruct.commandType;
+                    m_raftNode->applyCommand(command);      
+                }
+
+                else
+                {
+                    Logger::getInstance().log(Logger::Level::ERROR, "Received CLIENT_WRITE but not leader"); 
+                    close(socketFd);
+                    break;
+                }
+            }
             else
             {
-                Logger::getInstance().log(Logger::Level::ERROR, "Unknown message type"); 
+                Logger::getInstance().log(Logger::Level::ERROR, "Client Disconnected or insufficeint data"); 
                 break ;
-
             }
 
-        }
-
-        else
-        {
-            Logger::getInstance().log(Logger::Level::ERROR, "Client Disconnected or insufficeint data"); 
-            break ;
-        }
-
-    } 
+        } 
     
     }
     close(socketFd);
+    }
+}
+
+void RpcServer::setRaftNode(RaftNode* inRaftNode)
+{
+    m_raftNode = inRaftNode ;
 }
 
 RpcServer::~RpcServer()
@@ -240,7 +319,3 @@ RpcServer::~RpcServer()
     }
 }
 
-void RpcServer::setRaftNode(RaftNode* inRaftNode)
-{
-    m_raftNode = inRaftNode ;
-}

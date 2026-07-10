@@ -3,10 +3,11 @@
 #include <chrono>
 #include "logger.h"
 #include "message.h"
+#include "kv_store.h"
 
 
 
-RaftNode::RaftNode(NodeConfig& inNodeConfig , PeerManager& inPeerManager, ReplicationLog& inReplicationLog) : m_nodeConfigObj(inNodeConfig) , m_peerManagerObj(inPeerManager) , m_replicationLogObj(inReplicationLog)
+RaftNode::RaftNode(NodeConfig& inNodeConfig , PeerManager& inPeerManager, ReplicationLog& inReplicationLog, KvStore& inKvStore) : m_nodeConfigObj(inNodeConfig) , m_peerManagerObj(inPeerManager) , m_replicationLogObj(inReplicationLog) , m_kvStoreObj(inKvStore)
 {
 
 }
@@ -34,7 +35,8 @@ void RaftNode::runElectionTimer()
         [this] { return m_heartbeatReceived.load(); });
         m_heartbeatReceived = false ;
 
-        // If we didn't recieve any heartbeat we must start our own election to select leader
+        // If we didn't recieve any heartbeat within over randomised timeout 
+        // we must start our own election to select leader
         if(timedOut)
         {   
             m_votedFor = "";
@@ -170,6 +172,40 @@ void RaftNode::requestVote(const std::string& inCandidateId, int termCount, int 
     m_peerManagerObj.sendMessageToNode(inCandidateId, rawBytes);
 }
 
+ std::string RaftNode::getCurrentLeaderID() const
+ {
+    return m_currentLeaderID;
+ }
+
+ int RaftNode::getCurrentTerm() const
+ {
+    return m_currentTerm ;
+ }
+
+ bool RaftNode::isLeader() const
+ {
+    return m_state == NodeState::Leader ;
+ }
+
+ void RaftNode::applyCommand(const Command& cmd)
+{
+    std::visit([this](const auto& c) {
+        using T = std::decay_t<decltype(c)>;
+        if constexpr (std::is_same_v<T, SetCommand>)
+        {
+            m_kvStoreObj.set(c.key, c.value);
+        }
+        else if constexpr (std::is_same_v<T, DeleteCommand>)
+        {
+            m_kvStoreObj.del(c.key);
+        }
+        else if constexpr (std::is_same_v<T, FlushCommand>)
+        {
+            m_kvStoreObj.flush();
+        }
+    }, cmd);
+}
+
 RaftNode::~RaftNode()
 {
     m_shouldStop = true ;
@@ -182,5 +218,4 @@ RaftNode::~RaftNode()
         m_heartBeatThread.join();
     }
 }
-
 

@@ -7,6 +7,7 @@
 #include <condition_variable>
 #include <mutex>
 #include "replication_log.h"
+#include "kv_store.h"
 
 class RaftNode{
 
@@ -27,6 +28,7 @@ class RaftNode{
         NodeConfig& m_nodeConfigObj;
         PeerManager& m_peerManagerObj;
         ReplicationLog& m_replicationLogObj;
+        KvStore& m_kvStoreObj;
 
         std::thread m_electionThread;
         std::thread m_heartBeatThread;
@@ -48,8 +50,12 @@ class RaftNode{
         void requestVote(const std::string& inCandidateId /* send own id*/, int termCount , int lastLoggedIndex);
         void receiveVote(const int inTermCount, const bool inGranted);
         void receiveHeartBeat(const int term , const std::string& inLeaderId);
+        void applyCommand(const Command& inCommand);
+        std::string getCurrentLeaderID() const ;
+        int getCurrentTerm() const;
+        bool isLeader() const;
 
-        RaftNode(NodeConfig& inNodeConfig , PeerManager& inPeerManager, ReplicationLog& inReplicationLog);
+        RaftNode(NodeConfig& inNodeConfig , PeerManager& inPeerManager, ReplicationLog& inReplicationLog , KvStore& inKvStore);
         ~RaftNode();
 
 };

@@ -40,4 +40,3 @@ int ReplicationLog::getLastAppendedIndex() const
     return m_lastAppendedIndex ;
 
 }
-

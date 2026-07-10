@@ -36,6 +36,22 @@ std::string NodeConfig::getAddressOFNode(const std::string& inNodeID) const
 
 }
 
+std::string NodeConfig::getClientPortOfNode(const std::string& inNodeID) const 
+{
+
+    std::string resultClientPortAddress;
+    for(const auto& node :m_nodesList )
+    {
+        if(node.nodeID == inNodeID)
+        {
+            resultClientPortAddress = node.clientPortAddress ;
+        }
+    }
+
+    return resultClientPortAddress ;
+
+}
+
 std::string NodeConfig::getNodeIdOnPortAddress(const std::string& inPortAddress) const
 {
     std::string resultNodeID;
@@ -95,30 +111,49 @@ void NodeConfig::readNodeConfig()
             i++;
             continue ;
         } 
+
+        // Find the third occurrence starting just after the second one
+        size_t thirdEq = line.find('=', secondEq + 1);
+        if (thirdEq == std::string::npos) 
+        {
+            Logger::getInstance().log(Logger::Level::ERROR, "No client port address present at line " + std::to_string(i));
+            i++;
+            continue ;
+        }
         
         // Find the comma that marks the end of the first value
-        size_t comma = line.find(',', firstEq + 1);
+        size_t firstComma = line.find(',', firstEq + 1);
 
-        std::string nodeId, portAddress;
+        std::string nodeId, portAddress, clientPortAddress;
             // Extract first value (between first '=' and the comma)
-        if (comma != std::string::npos && comma > firstEq) 
+        if (firstComma != std::string::npos && firstComma > firstEq) 
         {
-            nodeId = trim(line.substr(firstEq + 1, comma - (firstEq + 1)));
+            nodeId = trim(line.substr(firstEq + 1, firstComma - (firstEq + 1)));
         }
 
-        // Extract second value (everything after the second '=')
-        portAddress = trim(line.substr(secondEq + 1));
+        // Find the second comma that marks the end of the second value
+         size_t secondComma = line.find(',', secondEq + 1);
+
+        // Extract second value (between second '=' and the second comma)
+         if (secondComma != std::string::npos && secondComma > secondEq) 
+        {
+            portAddress = trim(line.substr(secondEq + 1, secondComma - (secondEq + 1)));
+        }
+
+        // Extract third value (everything after the third '=')
+        clientPortAddress = trim(line.substr(thirdEq + 1));
 
         NodeConfig::PeerStruct currentNode ;
         currentNode.nodeID = nodeId ;
-        currentNode.portAddress = portAddress ;  
+        currentNode.portAddress = portAddress ; 
+        currentNode.clientPortAddress =  clientPortAddress ;
         if(currentNode.nodeID == m_nodeId)
         {
             m_portAddress = currentNode.portAddress ;
+            m_clientPortAddress = clientPortAddress ;
         }
             
         m_nodesList.push_back(currentNode);
-
     }
 }
     

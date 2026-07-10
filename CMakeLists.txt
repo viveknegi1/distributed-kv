@@ -18,5 +18,6 @@ add_executable(distributed-kv
     src/replication_log.cpp
     src/raft_node.cpp
     src/message.cpp
+    src/client_handler.cpp
 )
 target_include_directories(distributed-kv PRIVATE include)

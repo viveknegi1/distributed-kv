@@ -9,6 +9,8 @@
 #include <replication_log.h>
 #include "raft_node.h"
 #include <signal.h>
+#include "kv_store.h"
+#include "client_handler.h"
 
 int main(int argc, char* argv[])
 {
@@ -24,46 +26,28 @@ int main(int argc, char* argv[])
     NodeConfig nodeConfigObj(nodeId , "node.config");
     std::string ourPortAddress =  nodeConfigObj.getAddressOFNode(nodeId);
     Logger::getInstance().log(Logger::Level::INFO, "Our port address is : " + ourPortAddress);
-     /*
-    auto allNodes = nodeConfigObj.getAllOtherNodes();
-    for(const auto& node : allNodes)
-    {
-
-        Logger::getInstance().log(Logger::Level::INFO, "Peer node:  " + node.nodeID + " port address " + node.portAddress);
-
-    }
-     */
-    PeerManager peerManagerObj(nodeConfigObj);
     
-
+    PeerManager peerManagerObj(nodeConfigObj);
     
     auto portAddressString = nodeConfigObj.getAddressOFNode(nodeId);
     auto portAddress = std::stoi(portAddressString);
     RpcServer rpcServerObj(portAddress);
     ReplicationLog replicationLogObj ;
-    RaftNode raftNodeObj(nodeConfigObj, peerManagerObj, replicationLogObj);
+    KvStore kvStoreObj ;
+    RaftNode raftNodeObj(nodeConfigObj, peerManagerObj, replicationLogObj, kvStoreObj);
     auto raftNodePtr = &raftNodeObj;
     rpcServerObj.setRaftNode(raftNodePtr);
+    auto clientPortString = nodeConfigObj.getClientPortOfNode(nodeId);
+    auto clientPort = std::stoi(clientPortString);
+    ClientHandler clientHandler(raftNodeObj, peerManagerObj, kvStoreObj, clientPort);
     raftNodeObj.start();
+
     while(true)
     {
        std::this_thread::sleep_for(std::chrono::seconds(2));
     }
     
-    /*
-    LogEntry entry;
-    entry.term = 1;
-    entry.index = 0;
-    entry.commandType = SetCommand{"name", "John"};
 
-// Reading back:
-    if (std::holds_alternative<SetCommand>(entry.commandType)) {
-
-        auto& cmd = std::get<SetCommand>(entry.commandType);
-        Logger::getInstance().log(Logger::Level::INFO, "Command key : " + cmd.key + " Command value:" + cmd.value );
-    // cmd.key, cmd.value are accessible
-    }
-    */
     return 0 ;
 
 }

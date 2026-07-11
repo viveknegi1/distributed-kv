@@ -1,16 +1,15 @@
 #pragma once
 
-#include "kv_store.h"
-#include "raft_node.h"
-#include "peer_manager.h"
-#include <thread>
 #include <atomic>
+#include "kv_store.h"
+#include "peer_manager.h"
+#include "raft_node.h"
+#include <thread>
 #include <vector>
 
-class ClientHandler{
-
+class ClientHandler
+{
     private:
-
         enum class CommandType 
         {
             SET,   // internally 0
@@ -52,6 +51,5 @@ class ClientHandler{
 
     public:
         ClientHandler(RaftNode& inRaftNode , PeerManager& inPeerManager, KvStore& inKvStore, int inPortNumber);
-        ~ClientHandler();
-        
+        ~ClientHandler();        
 };

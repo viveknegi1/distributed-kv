@@ -4,7 +4,8 @@
 #include <mutex>
 #include <string>
 
-class Logger {
+class Logger 
+{
 
 public:
     enum class Level 

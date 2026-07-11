@@ -1,16 +1,17 @@
 #pragma once
-#include <string>
-#include "node_config.h"
-#include "peer_manager.h"
-#include <thread>
+
 #include <atomic>
 #include <condition_variable>
-#include <mutex>
-#include "replication_log.h"
 #include "kv_store.h"
+#include <mutex>
+#include "node_config.h"
+#include "peer_manager.h"
+#include "replication_log.h"
+#include <string>
+#include <thread>
 
-class RaftNode{
-
+class RaftNode
+{
     private:
         enum NodeState
         {

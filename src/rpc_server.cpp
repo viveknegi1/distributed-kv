@@ -1,12 +1,11 @@
 #include "rpc_server.h"
-
 #include "logger.h"
+#include "message.h"
 #include <netinet/in.h> 
+#include "raft_node.h"
 #include <sys/socket.h> 
 #include <unistd.h> 
 #include <thread>
-#include "message.h"
-#include "raft_node.h"
 
 namespace
 {
@@ -74,7 +73,7 @@ bool RpcServer::bindSocket()
     int result = bind(m_serverSocket , (sockaddr*)&in_sockaddrStruct, sizeof(in_sockaddrStruct));
     if( result == -1)
     {
-        Logger::getInstance().log(Logger::Level::ERROR, "Failed to bind the socket");
+        Logger::getInstance().log(Logger::Level::ERROR, "Failed to bind to the socket");
         return false;
     }
 
@@ -83,7 +82,7 @@ bool RpcServer::bindSocket()
 
 void RpcServer::startListening()
 {
-     while(!m_shouldStop)
+    while(!m_shouldStop)
     {           
         int socketFd = acceptConnection(); 
         if(socketFd >= 0 )
@@ -101,7 +100,7 @@ int RpcServer::acceptConnection()
 
     if(clientFd == -1)
     {
-        Logger::getInstance().log(Logger::Level::ERROR, "Failed to accept the client");      
+        Logger::getInstance().log(Logger::Level::ERROR, "Failed to accept the client connection");      
     }
     return clientFd;
 }
@@ -146,13 +145,11 @@ void RpcServer::handleConnection(int socketFd)
                 auto candidateId = voteRequestStruct.candidateID;
                 auto term = voteRequestStruct.term ;
                 auto lastLogIndex = voteRequestStruct.lastLogIndex;
-                m_raftNode->requestVote(candidateId, term , lastLogIndex);
-                
+                m_raftNode->requestVote(candidateId, term , lastLogIndex);         
             }
 
             else if (buffer.at(0) ==  static_cast<uint8_t>(MessageType::VOTE_RESPONSE))
             {
-
                 // Read term (4 bytes)
                 std::vector<uint8_t> termBuffer;
                 recvAll(socketFd, termBuffer, 4);
@@ -186,8 +183,7 @@ void RpcServer::handleConnection(int socketFd)
                 // Read Leader ID (strLen bytes)
                 std::vector<uint8_t> strBuffer;
                 recvAll(socketFd, strBuffer, strLen);
-
-                
+          
                 std::vector<uint8_t> resultBuffer;
                 resultBuffer.reserve(termBuffer.size() + lenBuffer.size() + strBuffer.size());
                 resultBuffer.insert(resultBuffer.end(), termBuffer.begin(), termBuffer.end());
@@ -206,7 +202,6 @@ void RpcServer::handleConnection(int socketFd)
             {
                 if(m_raftNode->isLeader())
                 {
-
                     // Read term (4 bytes)
                     std::vector<uint8_t> termBuffer;
                     recvAll(socketFd, termBuffer, 4);
@@ -217,8 +212,7 @@ void RpcServer::handleConnection(int socketFd)
                     uint8_t typeOfReqyest = reqBuffer[0];
 
                     std::vector<uint8_t> resultBuffer;
-
-                    if(typeOfReqyest == 1)
+                    if(typeOfReqyest == 1) // Set a key
                     {
 
                         // Read Key length (1 byte)
@@ -248,7 +242,7 @@ void RpcServer::handleConnection(int socketFd)
                         resultBuffer.insert(resultBuffer.end(), valBuffer.begin(), valBuffer.end());        
                     }
 
-                    else if (typeOfReqyest == 2)
+                    else if (typeOfReqyest == 2) // Delete a key
                     {
 
                         // Read Key length (1 byte)
@@ -267,7 +261,7 @@ void RpcServer::handleConnection(int socketFd)
                         resultBuffer.insert(resultBuffer.end(), keyBuffer.begin(), keyBuffer.end()) ;
 
                     }
-                    else
+                    else // Flush the key store map
                     {
                         resultBuffer.reserve(termBuffer.size() + reqBuffer.size());
                         resultBuffer.insert(resultBuffer.end(), termBuffer.begin(), termBuffer.end());

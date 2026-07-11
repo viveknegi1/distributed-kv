@@ -1,8 +1,10 @@
 #pragma once
-#include <vector>
-#include <thread>
+
 #include <atomic>
-class RaftNode;
+#include <thread>
+#include <vector>
+
+class RaftNode; // forward declaration
 
 class RpcServer
 {

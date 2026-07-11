@@ -1,26 +1,27 @@
-#include <iostream>
-#include "node_config.h"
-#include "logger.h"
-#include "peer_manager.h"
+
 #include <chrono>
-#include <thread>
-#include "rpc_server.h"
-#include <message.h>
-#include <replication_log.h>
-#include "raft_node.h"
-#include <signal.h>
-#include "kv_store.h"
 #include "client_handler.h"
+#include "kv_store.h"
+#include <iostream>
+#include "logger.h"
+#include <message.h>
+#include "node_config.h"
+#include "peer_manager.h"
+#include "raft_node.h"
+#include <replication_log.h>
+#include "rpc_server.h"
+#include <signal.h>
+#include <thread>
 
 int main(int argc, char* argv[])
 {
-
     signal(SIGPIPE, SIG_IGN); 
     if (argc != 2) {
         std::cout << "Usage: " << argv[0] << " <your_argument>" << std::endl;
         Logger::getInstance().log(Logger::Level::INFO, std::string ("Usage: ") + argv[0] + " <your_arguments>");
         return 1; 
     }
+
     Logger::getInstance().log(Logger::Level::INFO, std::string ("Our node id is: ") + argv[1]);
     std::string nodeId = argv[1];
     NodeConfig nodeConfigObj(nodeId , "node.config");
@@ -47,7 +48,6 @@ int main(int argc, char* argv[])
        std::this_thread::sleep_for(std::chrono::seconds(2));
     }
     
-
     return 0 ;
 
 }

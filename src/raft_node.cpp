@@ -1,11 +1,9 @@
 #include "raft_node.h"
-#include <random>
 #include <chrono>
+#include "kv_store.h"
 #include "logger.h"
 #include "message.h"
-#include "kv_store.h"
-
-
+#include <random>
 
 RaftNode::RaftNode(NodeConfig& inNodeConfig , PeerManager& inPeerManager, ReplicationLog& inReplicationLog, KvStore& inKvStore) : m_nodeConfigObj(inNodeConfig) , m_peerManagerObj(inPeerManager) , m_replicationLogObj(inReplicationLog) , m_kvStoreObj(inKvStore)
 {
@@ -72,7 +70,7 @@ void RaftNode::startElection()
     auto rawBytes = MessageSerializer::serializeVoteRequest(voteRequestData);
     m_peerManagerObj.sendMessageToAllNodes(rawBytes);
 
-    Logger::getInstance().log(Logger::Level::INFO, "startElection completed");
+    Logger::getInstance().log(Logger::Level::INFO, "Election is completed");
     
 }
 
@@ -117,12 +115,11 @@ void RaftNode::receiveVote(const int inTermCount, const bool inGranted)
         m_currentTerm = inTermCount;
         becomeFollower();
         return;
-    }
-    
+    }   
     if(inGranted)
     {
         m_voteCount++;
-        if(m_voteCount >= 2) 
+        if(m_voteCount >= 2) // in 3 nodes systems, if we two or more nodes, we get majority.
         {
             becomeLeader();
         }
@@ -187,6 +184,7 @@ void RaftNode::requestVote(const std::string& inCandidateId, int termCount, int 
     return m_state == NodeState::Leader ;
  }
 
+ // Apply write commands sent from clients 
  void RaftNode::applyCommand(const Command& cmd)
 {
     std::visit([this](const auto& c) {

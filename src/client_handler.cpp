@@ -1,8 +1,8 @@
 #include "client_handler.h"
 #include "logger.h"
+#include "message.h"
 #include <netinet/in.h> 
 #include <sys/socket.h> 
-#include "message.h"
 #include <unistd.h> 
 
 ClientHandler::ClientHandler(RaftNode& inRaftNode , PeerManager& inPeerManager, KvStore& inKvStore, int inPortNumber) : m_raftNode(inRaftNode) , m_peerManager(inPeerManager) , m_kvStore (inKvStore)
@@ -58,7 +58,7 @@ bool ClientHandler::bindSocket()
 
 void ClientHandler::startListening()
 {
-     while(!m_shouldStop)
+    while(!m_shouldStop)
     {           
         int socketFd = acceptConnection(); 
         if(socketFd >= 0 )

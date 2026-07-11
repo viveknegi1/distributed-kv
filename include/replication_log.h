@@ -1,8 +1,9 @@
 #pragma once
+
 #include "message.h"
-#include <vector>
 #include <mutex>
 #include <optional>
+#include <vector>
 
 class ReplicationLog
 {

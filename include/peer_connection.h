@@ -1,8 +1,9 @@
 #pragma once
-#include <string>
-#include <thread>
+
 #include <atomic>
 #include <mutex>
+#include <string>
+#include <thread>
 
 class PeerConnection
 {
@@ -14,12 +15,10 @@ class PeerConnection
         std::atomic<bool> m_isConnected = false ;
         std::atomic<bool> m_shouldStop = false ;
         std::mutex m_connectionMutex ;
-        
+
         void retryConnection();
         bool establishConnection();
         
-    
-    
     public:
         PeerConnection(std::string inNodeID, int inPortAddress );
         ~PeerConnection();

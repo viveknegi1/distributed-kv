@@ -1,7 +1,7 @@
 #include "node_config.h"
+#include <fstream>
 #include "logger.h"
 #include <string>
-#include <fstream>
 
 namespace
 {
@@ -38,7 +38,6 @@ std::string NodeConfig::getAddressOFNode(const std::string& inNodeID) const
 
 std::string NodeConfig::getClientPortOfNode(const std::string& inNodeID) const 
 {
-
     std::string resultClientPortAddress;
     for(const auto& node :m_nodesList )
     {
@@ -47,9 +46,7 @@ std::string NodeConfig::getClientPortOfNode(const std::string& inNodeID) const
             resultClientPortAddress = node.clientPortAddress ;
         }
     }
-
     return resultClientPortAddress ;
-
 }
 
 std::string NodeConfig::getNodeIdOnPortAddress(const std::string& inPortAddress) const
@@ -62,11 +59,8 @@ std::string NodeConfig::getNodeIdOnPortAddress(const std::string& inPortAddress)
             resultNodeID = node.nodeID ;
         }
     }
-
     return resultNodeID ;
-
 }
-
 
 std::vector<NodeConfig::PeerStruct> NodeConfig::getAllOtherNodes()  const
 {
@@ -78,11 +72,9 @@ std::vector<NodeConfig::PeerStruct> NodeConfig::getAllOtherNodes()  const
             allOtherNodes.push_back(node);
         }
     }
-
     return allOtherNodes ;
 }
     
-
 void NodeConfig::readNodeConfig()
 {
     std::ifstream file(m_configPath);
@@ -91,7 +83,6 @@ void NodeConfig::readNodeConfig()
         Logger::getInstance().log(Logger::Level::ERROR, "Could not open config file");
         return ;
     }
-
     std::string line;
     int i = 0 ;
     while(std::getline(file, line)) 
@@ -111,7 +102,6 @@ void NodeConfig::readNodeConfig()
             i++;
             continue ;
         } 
-
         // Find the third occurrence starting just after the second one
         size_t thirdEq = line.find('=', secondEq + 1);
         if (thirdEq == std::string::npos) 
@@ -119,8 +109,7 @@ void NodeConfig::readNodeConfig()
             Logger::getInstance().log(Logger::Level::ERROR, "No client port address present at line " + std::to_string(i));
             i++;
             continue ;
-        }
-        
+        } 
         // Find the comma that marks the end of the first value
         size_t firstComma = line.find(',', firstEq + 1);
 
@@ -151,8 +140,7 @@ void NodeConfig::readNodeConfig()
         {
             m_portAddress = currentNode.portAddress ;
             m_clientPortAddress = clientPortAddress ;
-        }
-            
+        }      
         m_nodesList.push_back(currentNode);
     }
 }

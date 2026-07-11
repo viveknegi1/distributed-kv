@@ -1,12 +1,11 @@
 #include "peer_connection.h"
-#include "logger.h"
-#include <sys/socket.h>
-#include <netinet/in.h>
 #include <arpa/inet.h>
-#include <unistd.h>
-#include <unistd.h>
-#include <thread>
 #include <chrono>
+#include "logger.h"
+#include <netinet/in.h>
+#include <sys/socket.h>
+#include <thread>
+#include <unistd.h>
 
 PeerConnection::PeerConnection(std::string inNodeID, int inPortAddress) : m_nodeID(inNodeID) , m_portAddress(inPortAddress)
 { 
@@ -53,8 +52,8 @@ bool PeerConnection::establishConnection()
 
     std::lock_guard<std::mutex> lock(m_connectionMutex);
     m_isConnected = true; 
-    return true;
 
+    return true;
 }
 
 bool PeerConnection::isConnected() const
@@ -85,21 +84,7 @@ void PeerConnection::sendDataToPeers(const std::vector<uint8_t>& inRawBytesData)
     }   
 }
 
- PeerConnection::~PeerConnection()
- {
-    m_shouldStop = true;
-    if(m_fileDescriptor != -1)
-    {
-        close(m_fileDescriptor);
-        m_fileDescriptor = -1;
-    }
-    if(m_thread.joinable())
-    { 
-        m_thread.join();
-    }
- }
-
- void PeerConnection::retryConnection()
+void PeerConnection::retryConnection()
 {
     while(!m_shouldStop)
     {
@@ -122,3 +107,17 @@ void PeerConnection::sendDataToPeers(const std::vector<uint8_t>& inRawBytesData)
         }
     }
 }
+
+ PeerConnection::~PeerConnection()
+ {
+    m_shouldStop = true;
+    if(m_fileDescriptor != -1)
+    {
+        close(m_fileDescriptor);
+        m_fileDescriptor = -1;
+    }
+    if(m_thread.joinable())
+    { 
+        m_thread.join();
+    }
+ }

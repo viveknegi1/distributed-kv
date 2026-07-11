@@ -20,20 +20,16 @@ void PeerManager::sendMessageToNode(const std::string& nodeID, const std::vector
     {
         if(it->second->isConnected())
         {
-
            it->second->sendDataToPeers(inRawByteMessage);
         }
         else
         {
             Logger::getInstance().log(Logger::Level::ERROR, "Node ID " + nodeID + " is not connected");
-
         }
-
     }
     else
     {
         Logger::getInstance().log(Logger::Level::ERROR, "Node ID " + nodeID + " is not present in the map");
-
     }
 }
 
@@ -43,7 +39,6 @@ void PeerManager::sendMessageToAllNodes(const std::vector<uint8_t>& inRawByteMes
     {
         sendMessageToNode(key, inRawByteMessage);
     }
-
 }
 
 int PeerManager::totalNodesConnected()

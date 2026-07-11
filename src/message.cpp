@@ -1,12 +1,11 @@
 #include "message.h"
 #include "logger.h"
 
-
 namespace MessageSerializer 
 {
     std::vector<uint8_t> serializeVoteRequest(const VoteRequestData& inVoteRequestData)
     {
-            std::vector<uint8_t> buffer;
+        std::vector<uint8_t> buffer;
         //first byte should be type
         buffer.push_back(static_cast<uint8_t>(MessageType::VOTE_REQUEST));
 
@@ -37,14 +36,12 @@ namespace MessageSerializer
 
     VoteRequestData deserializeVoteRequest(std::vector<uint8_t> inPutData)
     {
-
         if(inPutData.size() < 5)
         {
             Logger::getInstance().log(Logger::Level::ERROR, 
             "VoteRequest buffer too small: " + std::to_string(inPutData.size()));
             return {};
-        }
-        
+        }      
         //First to fourth byte  will be term
         int term ;
         std::memcpy(&term, &inPutData[0], sizeof(term));

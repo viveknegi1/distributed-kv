@@ -35,7 +35,8 @@ enum class MessageType : uint8_t
     VOTE_RESPONSE = 2,
     HEARTBEAT     = 3,
     CLIENT_WRITE  = 4,
-    CLIENT_WRITE_RESPONSE = 5
+    CLIENT_WRITE_RESPONSE = 5,
+    APPEND_ENTRIES = 6
 };
 
 struct VoteRequestData
@@ -69,6 +70,13 @@ struct ClientResponseData
     bool wasSucessful;
 };
 
+struct AppendEntriesData
+{
+    int term;
+    Command commandType; 
+    int logIndex ;
+};
+
 namespace MessageSerializer 
 {
     std::vector<uint8_t> serializeVoteRequest(const VoteRequestData& inVoteRequestData);
@@ -85,4 +93,7 @@ namespace MessageSerializer
 
     std::vector<uint8_t> serializeClientWriteResponse(const ClientResponseData& inClientResponseData);
     ClientResponseData deserializeClientWriteResponse(std::vector<uint8_t> inPutData);
+
+    std::vector<uint8_t> serializeAppendEntries(const AppendEntriesData& inAppendEntriesData);
+    AppendEntriesData deserializeAppendEntries(std::vector<uint8_t> inPutData);
 }

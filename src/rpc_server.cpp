@@ -279,6 +279,97 @@ void RpcServer::handleConnection(int socketFd)
                     break;
                 }
             }
+            else if(buffer.at(0) ==  static_cast<uint8_t>(MessageType::APPEND_ENTRIES))
+            {
+                if(!m_raftNode->isLeader())
+                {
+                    
+                    Logger::getInstance().log(Logger::Level::INFO, "Follower received APPEND_ENTRIES");
+                    // Read term (4 bytes)
+                    std::vector<uint8_t> termBuffer;
+                    recvAll(socketFd, termBuffer, 4);
+
+                    // Read type of write request ( SET, DEL, FLUSH  1 byte)
+                    std::vector<uint8_t> reqBuffer;
+                    recvAll(socketFd, reqBuffer, 1);
+                    uint8_t typeOfReqyest = reqBuffer[0];
+
+                    std::vector<uint8_t> resultBuffer;
+                    if(typeOfReqyest == 1) // Set a key
+                    {
+
+                        // Read Key length (1 byte)
+                        std::vector<uint8_t> keyLenBuffer;
+                        recvAll(socketFd, keyLenBuffer, 1);
+                        uint8_t keyLen = keyLenBuffer[0];
+
+                        // Read Key (keyLen bytes)
+                        std::vector<uint8_t> keyBuffer;
+                        recvAll(socketFd, keyBuffer, keyLen);
+
+                        // Read Value length (1 byte)
+                        std::vector<uint8_t> valueLenBuffer;
+                        recvAll(socketFd, valueLenBuffer, 1);
+                        uint8_t valLen = valueLenBuffer[0];
+
+                        // Read value (valLen bytes)
+                        std::vector<uint8_t> valBuffer;
+                        recvAll(socketFd, valBuffer, valLen);
+
+                        resultBuffer.reserve(termBuffer.size() + reqBuffer.size()+ keyLenBuffer.size() + keyBuffer.size() + valueLenBuffer.size() + valBuffer.size());
+                        resultBuffer.insert(resultBuffer.end(), termBuffer.begin(), termBuffer.end());
+                        resultBuffer.insert(resultBuffer.end(), reqBuffer.begin(), reqBuffer.end());
+                        resultBuffer.insert(resultBuffer.end(), keyLenBuffer.begin(), keyLenBuffer.end());
+                        resultBuffer.insert(resultBuffer.end(), keyBuffer.begin(), keyBuffer.end());
+                        resultBuffer.insert(resultBuffer.end(), valueLenBuffer.begin(), valueLenBuffer.end());
+                        resultBuffer.insert(resultBuffer.end(), valBuffer.begin(), valBuffer.end());        
+                    }
+
+                    else if (typeOfReqyest == 2) // Delete a key
+                    {
+
+                        // Read Key length (1 byte)
+                        std::vector<uint8_t> keyLenBuffer;
+                        recvAll(socketFd, keyLenBuffer, 1);
+                        uint8_t keyLen = keyLenBuffer[0];
+
+                        // Read Key (keyLen bytes)
+                        std::vector<uint8_t> keyBuffer;
+                        recvAll(socketFd, keyBuffer, keyLen);
+
+                        resultBuffer.reserve(termBuffer.size() + reqBuffer.size() + keyLenBuffer.size() + keyBuffer.size());
+                        resultBuffer.insert(resultBuffer.end(), termBuffer.begin(), termBuffer.end());
+                        resultBuffer.insert(resultBuffer.end(), reqBuffer.begin(), reqBuffer.end());
+                        resultBuffer.insert(resultBuffer.end(), keyLenBuffer.begin(), keyLenBuffer.end());
+                        resultBuffer.insert(resultBuffer.end(), keyBuffer.begin(), keyBuffer.end()) ;
+
+                    }
+                    else // Flush the key store map
+                    {
+                        resultBuffer.reserve(termBuffer.size() + reqBuffer.size());
+                        resultBuffer.insert(resultBuffer.end(), termBuffer.begin(), termBuffer.end());
+                        resultBuffer.insert(resultBuffer.end(), reqBuffer.begin(), reqBuffer.end());
+                    }
+
+                    // Read term (4 bytes)
+                    std::vector<uint8_t> logIndexBuffer;
+                    recvAll(socketFd, logIndexBuffer, 4);
+                    resultBuffer.insert(resultBuffer.end(),logIndexBuffer.begin(),logIndexBuffer.end());
+
+                     
+                    auto appendEntriesResult = MessageSerializer::deserializeAppendEntries(resultBuffer);
+                    auto  command= appendEntriesResult.commandType;
+                    m_raftNode->applyCommand(command);      
+                }
+
+                else
+                {
+                    Logger::getInstance().log(Logger::Level::ERROR, "Received Append Entries but node isleader"); 
+                    close(socketFd);
+                    break;
+                }
+            }
+
             else
             {
                 Logger::getInstance().log(Logger::Level::ERROR, "Client Disconnected or insufficeint data"); 

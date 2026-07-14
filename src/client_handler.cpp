@@ -189,10 +189,11 @@ std::string ClientHandler::handleWriteCommand(ClientHandler::ParsedCommand& inPa
 
         else
         {
-            // If node is the leader directly execute the command
+            // If node is the leader directly execute the command  via applyCommand 
             if(m_raftNode.isLeader())
             {
-               m_kvStore.set(argumentList.at(0), argumentList.at(1));
+               Command cmd = SetCommand{argumentList.at(0), argumentList.at(1)};
+               m_raftNode.applyCommand(cmd);
                return "OK\n";
             }
             
@@ -222,8 +223,9 @@ std::string ClientHandler::handleWriteCommand(ClientHandler::ParsedCommand& inPa
         {
             if(m_raftNode.isLeader())
             {
-               auto response = m_kvStore.del(argumentList.at(0));
-               return response ? "True\n":"False";
+               Command cmd = DeleteCommand{argumentList.at(0)};
+               m_raftNode.applyCommand(cmd);
+               return "OK\n"; 
             }
 
             DeleteCommand deleteStruct;
@@ -241,7 +243,8 @@ std::string ClientHandler::handleWriteCommand(ClientHandler::ParsedCommand& inPa
     {
         if(m_raftNode.isLeader())
             {
-               m_kvStore.flush();
+               Command cmd = FlushCommand{};
+               m_raftNode.applyCommand(cmd); 
                return "OK\n";
             }
         

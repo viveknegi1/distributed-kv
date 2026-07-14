@@ -68,6 +68,7 @@ void RaftNode::startElection()
     voteRequestData.term = m_currentTerm;
     voteRequestData.lastLogIndex = m_replicationLogObj.getLastAppendedIndex();
     auto rawBytes = MessageSerializer::serializeVoteRequest(voteRequestData);
+    Logger::getInstance().log(Logger::Level::INFO, "Leader sending APPEND_ENTRIES to followers");
     m_peerManagerObj.sendMessageToAllNodes(rawBytes);
 
     Logger::getInstance().log(Logger::Level::INFO, "Election is completed");
@@ -202,6 +203,24 @@ void RaftNode::requestVote(const std::string& inCandidateId, int termCount, int 
             m_kvStoreObj.flush();
         }
     }, cmd);
+
+    if(m_state == NodeState::Leader)
+    {
+        
+        LogEntry data ;
+        data.term = m_currentTerm;
+        data.commandType = cmd;
+        data.index = m_replicationLogObj.getLastAppendedIndex() + 1;
+        m_replicationLogObj.appendEntry(data);
+        
+        AppendEntriesData appendEntriesData;
+        appendEntriesData.term = m_currentTerm;
+        appendEntriesData.logIndex = m_replicationLogObj.getLastAppendedIndex(); 
+        appendEntriesData.commandType = cmd;
+        auto rawBytes = MessageSerializer::serializeAppendEntries(appendEntriesData);
+        m_peerManagerObj.sendMessageToAllNodes(rawBytes);   
+    }
+   
 }
 
 RaftNode::~RaftNode()

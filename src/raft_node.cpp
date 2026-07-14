@@ -130,13 +130,11 @@ void RaftNode::receiveVote(const int inTermCount, const bool inGranted)
 void RaftNode::receiveHeartBeat(const int term , const std::string& inLeaderId)
 {
     m_currentLeaderID = inLeaderId;
-
     if( term > m_currentTerm)
     {
         m_currentTerm = term ;
         m_votedFor = "" ;
     }
-
     becomeFollower();
     m_heartbeatReceived = true;
     m_cv.notify_one();
@@ -205,8 +203,7 @@ void RaftNode::requestVote(const std::string& inCandidateId, int termCount, int 
     }, cmd);
 
     if(m_state == NodeState::Leader)
-    {
-        
+    {  
         LogEntry data ;
         data.term = m_currentTerm;
         data.commandType = cmd;

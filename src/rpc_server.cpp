@@ -106,8 +106,7 @@ int RpcServer::acceptConnection()
 }
         
 void RpcServer::handleConnection(int socketFd)
-{
-    
+{ 
     if(m_raftNode != nullptr)
     {
         while(true)
@@ -165,13 +164,12 @@ void RpcServer::handleConnection(int socketFd)
                 auto voteResponseStruct = MessageSerializer::deserializeVoteResponse(resultBuffer);
                 auto term = voteResponseStruct.term ;
                 auto voteGranted = voteResponseStruct.granted;
-                m_raftNode->receiveVote( term , voteGranted);
-               
+                m_raftNode->receiveVote( term , voteGranted);              
             }
 
             else if(buffer.at(0) ==  static_cast<uint8_t>(MessageType::HEARTBEAT))
             {
-                 // Read term (4 bytes)
+                // Read term (4 bytes)
                 std::vector<uint8_t> termBuffer;
                 recvAll(socketFd, termBuffer, 4);
 
@@ -193,9 +191,7 @@ void RpcServer::handleConnection(int socketFd)
                 auto heartBeatStruct = MessageSerializer::deserializeHeartbeat(resultBuffer);
                 auto leaderID = heartBeatStruct.leaderID;
                 auto term = heartBeatStruct.term ;
-        
                 m_raftNode->receiveHeartBeat(term ,leaderID);
-
             }
 
             else if(buffer.at(0) ==  static_cast<uint8_t>(MessageType::CLIENT_WRITE))
@@ -214,7 +210,6 @@ void RpcServer::handleConnection(int socketFd)
                     std::vector<uint8_t> resultBuffer;
                     if(typeOfReqyest == 1) // Set a key
                     {
-
                         // Read Key length (1 byte)
                         std::vector<uint8_t> keyLenBuffer;
                         recvAll(socketFd, keyLenBuffer, 1);
@@ -244,7 +239,6 @@ void RpcServer::handleConnection(int socketFd)
 
                     else if (typeOfReqyest == 2) // Delete a key
                     {
-
                         // Read Key length (1 byte)
                         std::vector<uint8_t> keyLenBuffer;
                         recvAll(socketFd, keyLenBuffer, 1);
@@ -282,8 +276,7 @@ void RpcServer::handleConnection(int socketFd)
             else if(buffer.at(0) ==  static_cast<uint8_t>(MessageType::APPEND_ENTRIES))
             {
                 if(!m_raftNode->isLeader())
-                {
-                    
+                {    
                     Logger::getInstance().log(Logger::Level::INFO, "Follower received APPEND_ENTRIES");
                     // Read term (4 bytes)
                     std::vector<uint8_t> termBuffer;
@@ -297,7 +290,6 @@ void RpcServer::handleConnection(int socketFd)
                     std::vector<uint8_t> resultBuffer;
                     if(typeOfReqyest == 1) // Set a key
                     {
-
                         // Read Key length (1 byte)
                         std::vector<uint8_t> keyLenBuffer;
                         recvAll(socketFd, keyLenBuffer, 1);
@@ -327,7 +319,6 @@ void RpcServer::handleConnection(int socketFd)
 
                     else if (typeOfReqyest == 2) // Delete a key
                     {
-
                         // Read Key length (1 byte)
                         std::vector<uint8_t> keyLenBuffer;
                         recvAll(socketFd, keyLenBuffer, 1);
@@ -342,7 +333,6 @@ void RpcServer::handleConnection(int socketFd)
                         resultBuffer.insert(resultBuffer.end(), reqBuffer.begin(), reqBuffer.end());
                         resultBuffer.insert(resultBuffer.end(), keyLenBuffer.begin(), keyLenBuffer.end());
                         resultBuffer.insert(resultBuffer.end(), keyBuffer.begin(), keyBuffer.end()) ;
-
                     }
                     else // Flush the key store map
                     {
@@ -355,13 +345,11 @@ void RpcServer::handleConnection(int socketFd)
                     std::vector<uint8_t> logIndexBuffer;
                     recvAll(socketFd, logIndexBuffer, 4);
                     resultBuffer.insert(resultBuffer.end(),logIndexBuffer.begin(),logIndexBuffer.end());
-
-                     
+      
                     auto appendEntriesResult = MessageSerializer::deserializeAppendEntries(resultBuffer);
                     auto  command= appendEntriesResult.commandType;
                     m_raftNode->applyCommand(command);      
                 }
-
                 else
                 {
                     Logger::getInstance().log(Logger::Level::ERROR, "Received Append Entries but node isleader"); 
@@ -369,15 +357,12 @@ void RpcServer::handleConnection(int socketFd)
                     break;
                 }
             }
-
             else
             {
                 Logger::getInstance().log(Logger::Level::ERROR, "Client Disconnected or insufficeint data"); 
                 break ;
             }
-
-        } 
-    
+        }     
     }
     close(socketFd);
     }
@@ -390,8 +375,7 @@ void RpcServer::setRaftNode(RaftNode* inRaftNode)
 
 RpcServer::~RpcServer()
 {
-    m_shouldStop = true;
-  
+    m_shouldStop = true;  
     for( auto& thread: m_peerConnections)
     {
         thread.join();

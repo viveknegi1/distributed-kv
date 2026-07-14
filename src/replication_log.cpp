@@ -38,5 +38,4 @@ void ReplicationLog::updateCommitIndex(int inCommitIndex)
 int ReplicationLog::getLastAppendedIndex() const
 {
     return m_lastAppendedIndex ;
-
 }

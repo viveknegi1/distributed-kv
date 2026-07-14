@@ -31,9 +31,7 @@ std::string NodeConfig::getAddressOFNode(const std::string& inNodeID) const
             resultPortAddress = node.portAddress ;
         }
     }
-
     return resultPortAddress ;
-
 }
 
 std::string NodeConfig::getClientPortOfNode(const std::string& inNodeID) const 

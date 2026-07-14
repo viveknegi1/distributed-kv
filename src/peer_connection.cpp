@@ -52,7 +52,6 @@ bool PeerConnection::establishConnection()
 
     std::lock_guard<std::mutex> lock(m_connectionMutex);
     m_isConnected = true; 
-
     return true;
 }
 
